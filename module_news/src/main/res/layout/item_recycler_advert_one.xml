@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingBottom="8dp"
+    android:paddingLeft="14dp"
+    android:paddingRight="14dp"
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/iv_thumbnail"
+        android:layout_width="90dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user_center_default_bac"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/textStyle_15_black"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="14dp"
+        android:layout_marginRight="8dp"
+        android:maxLines="2"
+        tools:text="印度著名瑜伽导师称印应做好战争准备 抵制中国货"
+        app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <View
+        android:id="@+id/view_cancel_bac"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <ImageView
+        android:id="@+id/iv_cancel"
+        android:layout_width="9dp"
+        android:layout_height="9dp"
+        android:src="@drawable/item_cancel"
+        app:layout_constraintBottom_toBottomOf="@id/view_cancel_bac"
+        app:layout_constraintLeft_toLeftOf="@id/view_cancel_bac"
+        app:layout_constraintRight_toRightOf="@id/view_cancel_bac"
+        app:layout_constraintTop_toTopOf="@id/view_cancel_bac"/>
+
+    <TextView
+        android:id="@+id/tv_source"
+        style="@style/textStyle_13_black2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="14dp"
+        tools:text="新闻热点"
+        app:layout_constraintBottom_toBottomOf="@id/iv_cancel"
+        app:layout_constraintLeft_toRightOf="@id/iv_thumbnail"
+        app:layout_constraintTop_toTopOf="@id/iv_cancel"/>
+
+
+    <TextView
+        android:id="@+id/tv_advert"
+        android:layout_width="20dp"
+        android:layout_height="11dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/news_ad_bg"
+        android:gravity="center"
+        android:text="@string/advert_notice"
+        android:textColor="@android:color/holo_blue_light"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@id/iv_cancel"
+        app:layout_constraintRight_toLeftOf="@id/iv_cancel"
+        app:layout_constraintTop_toTopOf="@id/iv_cancel"
+        tools:ignore="SmallSp"/>
+
+
+</android.support.constraint.ConstraintLayout>

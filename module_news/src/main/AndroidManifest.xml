@@ -1,0 +1,10 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="hua.news.module_news">
+    <application>
+        <activity android:name=".ifengdetail.IFengDetailActivity"/>
+        <activity android:name=".ifengdetail.IFengWebActivity"/>
+        <activity
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+            android:name=".ifengdetail.ImageBrowserActivity"/>
+    </application>
+</manifest>

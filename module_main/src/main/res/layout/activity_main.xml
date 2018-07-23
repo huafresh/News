@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:mContext=".MainActivity"
+    android:orientation="vertical">
+
+    <com.example.hua.framework.widget.DisableHorScrollViewPager
+        android:id="@+id/main_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/line_color"/>
+
+    <com.example.hua.framework.widget.CommonTabLayout
+        android:id="@+id/main_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/bottom_bar_bac"
+        app:tabTextColor="@color/text_color_theme"
+        app:tabSelectedTextColor="@color/text_color_theme"
+        app:tabIndicatorHeight="0dp"
+        app:tabIndicatorColor="@color/color_transparent" />
+</LinearLayout>

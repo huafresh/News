@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <corners
+        android:topLeftRadius="@dimen/me_sign_bac_radius"
+        android:bottomLeftRadius="@dimen/me_sign_bac_radius"/>
+    <stroke
+        android:color="@color/color_white"
+        android:width="0.2dp"/>
+    <padding
+        android:top="@dimen/me_sign_bac_padding_top"
+        android:bottom="@dimen/me_sign_bac_padding_top"
+        android:left="@dimen/me_sign_bac_padding_left"/>
+</shape>

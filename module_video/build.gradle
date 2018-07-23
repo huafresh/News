@@ -1,0 +1,49 @@
+import hua.plugins.comgradle.ComBuild
+
+apply plugin: ComBuild
+apply plugin: 'com.jakewharton.butterknife'
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        multiDexEnabled true
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+
+    //基础组件
+    implementation project(':module_common')
+    implementation project(':module_service')
+
+    //播放器
+    implementation files('libs/player-release.aar')
+    implementation files('libs/vlc-release.aar')
+
+    //处理butterknife注解
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    //处理ARouter注解
+    annotationProcessor 'com.alibaba:arouter-compiler:1.1.3'
+}

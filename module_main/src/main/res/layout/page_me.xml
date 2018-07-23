@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/window_bac">
+
+
+    <View
+        android:id="@+id/view_head_bac"
+        android:layout_width="0dp"
+        android:layout_height="189dp"
+        android:background="@color/color_theme"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <!--设置-->
+    <TextView
+        android:id="@+id/tv_setting_text"
+        style="@style/textStyle_14_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/me_setting"
+        app:layout_constraintRight_toRightOf="@+id/view_head_bac"
+        app:layout_constraintTop_toTopOf="@+id/view_head_bac"/>
+
+    <ImageView
+        android:id="@+id/iv_setting_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/setting"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_setting_text"
+        app:layout_constraintRight_toLeftOf="@+id/tv_setting_text"
+        app:layout_constraintTop_toTopOf="@+id/tv_setting_text"/>
+
+    <!--登录-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_login_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="50dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="@+id/view_head_bac"
+        app:layout_constraintTop_toTopOf="@+id/view_head_bac">
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/textStyle_14_red"
+            android:layout_width="98dp"
+            android:layout_height="48dp"
+            android:text="@string/me_login"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_phone_register"
+            style="@style/textStyle_11_white"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:text="@string/me_login_phone"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            app:layout_constraintLeft_toRightOf="@+id/btn_login"
+            app:layout_constraintTop_toTopOf="@+id/btn_login"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:src="@drawable/more_right_white"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_login"
+            app:layout_constraintLeft_toRightOf="@+id/tv_phone_register"
+            app:layout_constraintTop_toTopOf="@+id/btn_login"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <!--登录后用户信息-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_user_info_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:visibility="gone"
+        app:layout_constraintLeft_toLeftOf="@+id/view_head_bac"
+        app:layout_constraintTop_toTopOf="@+id/view_head_bac">
+
+        <ImageView
+            android:id="@+id/iv_user_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/default_head"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/tv_user_nick_name"
+            style="@style/textStyle_17_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_user_follow_level"
+            app:layout_constraintLeft_toRightOf="@+id/iv_user_head"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"/>
+
+        <TextView
+            android:id="@+id/tv_user_follow_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/shap_follow_level_bac"
+            android:textColor="@color/text_color_follow_level"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/iv_user_head"
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_nick_name"/>
+
+        <TextView
+            android:id="@+id/tv_user_gold_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/shap_follow_level_bac"
+            android:textColor="@color/text_color_follow_level"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_user_follow_level"
+            app:layout_constraintLeft_toRightOf="@+id/tv_user_follow_level"
+            app:layout_constraintTop_toTopOf="@+id/tv_user_follow_level"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <!--签到-->
+    <LinearLayout
+        android:id="@+id/ll_sign_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="70dp"
+        android:background="@drawable/shape_me_sign_bac"
+        android:gravity="center"
+        app:layout_constraintRight_toRightOf="@+id/view_head_bac"
+        app:layout_constraintTop_toTopOf="@+id/view_head_bac">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/me_sign"/>
+
+        <TextView
+            style="@style/textStyle_14_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="15dp"
+            android:text="@string/me_check_in"/>
+
+    </LinearLayout>
+
+    <!--第三方登录-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_third_login"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="115dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="@+id/view_head_bac"
+        app:layout_constraintRight_toRightOf="@+id/view_head_bac"
+        app:layout_constraintTop_toTopOf="@+id/view_head_bac">
+
+        <ImageView
+            android:id="@+id/iv_third_wechat_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/we_chat_login"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_one"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_third_wechat_text"
+            app:layout_constraintTop_toTopOf="@+id/view_third_one"/>
+
+        <TextView
+            android:id="@+id/tv_third_wechat_text"
+            style="@style/textStyle_14_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/me_login_wx"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_one"
+            app:layout_constraintLeft_toRightOf="@+id/iv_third_wechat_image"
+            app:layout_constraintRight_toLeftOf="@+id/view_third_one"
+            app:layout_constraintTop_toTopOf="@+id/view_third_one"/>
+
+        <View
+            android:id="@+id/view_third_one"
+            android:layout_width="1dp"
+            android:layout_height="17dp"
+            android:background="@color/text_color_white2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/view_third_two"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_third_sina_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/blog_login"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_one"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@+id/view_third_one"
+            app:layout_constraintRight_toLeftOf="@+id/tv_third_sina_text"
+            app:layout_constraintTop_toTopOf="@+id/view_third_one"/>
+
+        <TextView
+            android:id="@+id/tv_third_sina_text"
+            style="@style/textStyle_14_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/me_login_blog"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_one"
+            app:layout_constraintLeft_toRightOf="@+id/iv_third_sina_image"
+            app:layout_constraintRight_toLeftOf="@+id/view_third_two"
+            app:layout_constraintTop_toTopOf="@+id/view_third_one"/>
+
+        <View
+            android:id="@+id/view_third_two"
+            android:layout_width="1dp"
+            android:layout_height="17dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@color/text_color_white2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="@+id/view_third_one"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/iv_third_qq_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/qq_login"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_two"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toRightOf="@+id/view_third_two"
+            app:layout_constraintRight_toLeftOf="@+id/tv_third_qq_text"
+            app:layout_constraintTop_toTopOf="@+id/view_third_two"/>
+
+        <TextView
+            android:id="@+id/tv_third_qq_text"
+            style="@style/textStyle_14_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginStart="5dp"
+            android:text="@string/me_login_qq"
+            app:layout_constraintBottom_toBottomOf="@+id/view_third_two"
+            app:layout_constraintLeft_toRightOf="@+id/iv_third_qq_image"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/view_third_two"/>
+    </android.support.constraint.ConstraintLayout>
+
+    <!--我关注的卡片-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/my_notice_card"
+        android:layout_width="0dp"
+        android:layout_height="46dp"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toBottomOf="@+id/view_head_bac"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_head_bac">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_notice_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+    </android.support.v7.widget.CardView>
+
+    <!--我的数据卡片-->
+    <android.support.v7.widget.CardView
+        android:id="@+id/my_data_card"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_head_bac">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_data_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:overScrollMode="never"/>
+    </android.support.v7.widget.CardView>
+
+
+    <!--可滑动部分-->
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="265dp"
+        android:layout_marginEnd="@dimen/left_right_padding"
+        android:layout_marginLeft="@dimen/left_right_padding"
+        android:layout_marginRight="@dimen/left_right_padding"
+        android:layout_marginStart="@dimen/left_right_padding"
+        android:paddingTop="@dimen/me_divider_line_height"
+        android:scrollbars="none"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/my_data_card">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--我的消息卡片-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="3dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/my_message_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+            </android.support.v7.widget.CardView>
+
+            <!--我的钱包等卡片-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/me_divider_line_height"
+                app:cardCornerRadius="3dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/my_money_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+            </android.support.v7.widget.CardView>
+
+            <!--底部其他卡片-->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/me_divider_line_height"
+                app:cardCornerRadius="3dp">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/my_other_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="never"/>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

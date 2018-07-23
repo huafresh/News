@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingBottom="15dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="15dp"
+        android:textColor="@color/color_black"
+        android:text="扔了20块钱，还没搞清楚这条鱼到底是什么情况？"
+        android:textSize="18sp"/>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_finish_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/vv_video"
+        app:layout_constraintTop_toTopOf="@+id/vv_video">
+
+
+    </android.support.constraint.ConstraintLayout>
+
+    <hua.news.player.VideoView
+        android:id="@+id/vv_video"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:background="@android:color/black"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"/>
+
+    <ImageView
+        android:id="@+id/iv_cover"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/vv_video"
+        app:layout_constraintLeft_toLeftOf="@id/vv_video"
+        app:layout_constraintRight_toRightOf="@id/vv_video"
+        app:layout_constraintTop_toTopOf="@id/vv_video"/>
+
+    <ImageButton
+        android:id="@+id/ib_video_play2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:src="@drawable/btn_video_play"
+        app:layout_constraintBottom_toBottomOf="@id/vv_video"
+        app:layout_constraintLeft_toLeftOf="@id/vv_video"
+        app:layout_constraintRight_toRightOf="@id/vv_video"
+        app:layout_constraintTop_toTopOf="@id/vv_video"/>
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        android:text="00:25"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@id/vv_video"
+        app:layout_constraintRight_toRightOf="@id/vv_video"/>
+
+    <TextView
+        android:id="@+id/tv_video_next_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="@string/video_next_notice"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="15dp"
+        app:layout_constraintBottom_toBottomOf="@id/vv_video"
+        app:layout_constraintRight_toRightOf="@id/vv_video"/>
+
+    <LinearLayout
+        android:id="@+id/ll_user"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/video_list_user_bac"
+        android:gravity="center"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vv_video">
+
+        <ImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/default_head"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:maxWidth="90dp"
+            android:singleLine="true"
+            android:textColor="@color/color_black"
+            android:text="我不是李白"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_from"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/video_list_user_bac"
+        android:gravity="center"
+        android:text="奇趣"
+        android:textColor="@color/color_black"
+
+        app:layout_constraintBottom_toBottomOf="@id/ll_user"
+        app:layout_constraintLeft_toRightOf="@id/ll_user"
+        app:layout_constraintTop_toTopOf="@id/ll_user"/>
+
+    <ImageView
+        android:id="@+id/iv_comment_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/video_list_comment"
+        app:layout_constraintBottom_toBottomOf="@id/ll_user"
+        app:layout_constraintRight_toLeftOf="@+id/tv_comment_count"
+        app:layout_constraintTop_toTopOf="@id/ll_user"/>
+
+    <TextView
+        android:id="@+id/tv_comment_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text="205"
+        android:textColor="@color/color_black"
+
+        app:layout_constraintBottom_toBottomOf="@id/ll_user"
+        app:layout_constraintRight_toLeftOf="@+id/iv_more"
+        app:layout_constraintTop_toTopOf="@id/ll_user"/>
+
+    <ImageView
+        android:id="@+id/iv_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/horizontal_more"
+        app:layout_constraintBottom_toBottomOf="@id/ll_user"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vv_video"
+        app:layout_constraintTop_toTopOf="@id/ll_user"/>
+
+</android.support.constraint.ConstraintLayout>

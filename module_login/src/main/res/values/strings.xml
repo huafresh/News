@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">login</string>
+
+
+    <!--登录页面-->
+    <string name="login_login">登 录</string>
+    <string name="login_account_hint">邮箱/手机号</string>
+    <string name="login_pwd_hint">密码</string>
+    <string name="login_forget_pwd">忘记密码?</string>
+    <string name="login_other_login">使用其他方式登录</string>
+    <string name="login_we_chat">微信账号登录</string>
+    <string name="login_sina">新浪微博登录</string>
+    <string name="login_qq">QQ账号登录</string>
+    <string name="login_no_account">还没有账号?</string>
+    <string name="login_register">立即注册</string>
+
+    <!--手机注册页面-->
+    <string name="phone_regiser_title">注册华创账号</string>
+    <string name="phone_regiser_phone_hint">请输入手机号</string>
+    <string name="phone_register_suffix">\@163.com</string>
+    <string name="phone_register_verify_notice_previous">>>请依次点击\"拆\"\"历\"\"叫\"完成验证>></string>
+    <string name="phone_register_verify_notice_end">完成验证>></string>
+    <string name="phone_register_next">下一步</string>
+    <string name="phone_register_warning">用户注册即代表同意《服务条款》和《网络游戏用户隐私保护和个人信息利用政策》</string>
+
+    <!--邮箱注册页面-->
+    <string name="mail_register_hint">6–18位字母数字组合</string>
+    <string name="mail_register_phone_hint">输入验证手机号</string>
+    <string name="mail_register_suffix1">\@126.com</string>
+    <string name="mail_register_suffix2">\@yeah.net</string>
+
+    <!--手机号短信验证页面-->
+    <string name="verify_register_notice_prefix">短信验证码已发送至  :  </string>
+    <string name="verify_register_code_hint">请输入短信验证码</string>
+    <string name="verify_register_send_again">重新发送</string>
+    <string name="verify_register_pwd_hint">6–16位字母数字字符组合密码</string>
+    <string name="verify_register_button_text">注册</string>
+</resources>

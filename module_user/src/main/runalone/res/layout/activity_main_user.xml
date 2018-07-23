@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/collect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开收藏页面"/>
+    <Button
+        android:id="@+id/user_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="打开用户中心页面"/>
+
+
+</LinearLayout>

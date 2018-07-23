@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--蓝色-->
+    <color name="color_blue">#ff4f9ae8</color>
+    <!--分割线颜色-->
+    <color name="line_color">@color/color_111</color>
+
+</resources>

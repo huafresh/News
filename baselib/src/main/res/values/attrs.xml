@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="theme">
+
+    </declare-styleable>
+
+    <!--HeartView控件的自定义属性-->
+    <declare-styleable name="HeartView">
+        <attr name="HeartStyle">
+            <flag name="fill" value="1"/>
+            <flag name="stroke" value="2"/>
+        </attr>
+        <attr name="FillColor" format="color"/>
+        <attr name="StrokeColor" format="color"/>
+        <attr name="StrokeWidth" format="dimension"/>
+    </declare-styleable>
+
+    <!--CommonTabLayout控件的自定义属性-->
+    <declare-styleable name="CommonTabLayout">
+        <!--下划线停靠的位置，取值[-1,1]-->
+        <attr name="StayPositionOffset" format="float"/>
+        <!--tab之间的间隔，最左边以及最右边是改值的一半-->
+        <attr name="TabViewInterval" format="dimension"/>
+        <!--tab文本字体大小-->
+        <attr name="tabTextSize" format="dimension"/>
+        <!--tab文本左右padding-->
+        <attr name="tabPaddingWrapper" format="dimension"/>
+        <!--tab最小宽度-->
+        <attr name="tabMinScrollableWidth" format="dimension"/>
+    </declare-styleable>
+
+    <!--AnchorViewLayout控件的LayoutParams自定义属性-->
+    <declare-styleable name="AnchorViewLayout">
+        <!--设置anchorView的id-->
+        <attr name="layout_anchorId" format="reference" />
+        <!--设置anchor的方式-->
+        <attr name="layout_anchorGravity2">
+            <enum name="center" value="1" />
+            <enum name="center_vertical" value="2" />
+            <enum name="center_horizontal" value="3" />
+            <enum name="left" value="4" />
+            <enum name="top" value="5" />
+            <enum name="right" value="6" />
+            <enum name="bottom" value="7" />
+        </attr>
+        <!--设置view相对anchor的横坐标-->
+        <attr name="layout_anchorX" format="dimension" />
+        <!--设置view相对anchor的纵坐标-->
+        <attr name="layout_anchorY" format="dimension" />
+    </declare-styleable>
+
+    <!--ViewPagerIndicator控件自定义属性-->
+    <declare-styleable name="ViewPagerIndicator">
+        <attr name="indicator" format="string"/>
+    </declare-styleable>
+
+    <!--DraggableListView控件的自定义属性-->
+    <declare-styleable name="DragOrderRecyclerView">
+        <attr name="ItemStyle">
+            <enum name="vertical" value="1"/>
+            <enum name="horizontal" value="2"/>
+            <enum name="grid" value="3"/>
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="WaveImageView">
+        <attr name="wave_height" format="dimension"/>
+        <attr name="wave_cycle" format="integer"/>
+        <attr name="wave_second_color" format="color"/>
+        <attr name="wave_speed" format="dimension"/>
+        <attr name="wave_empty_color" format="color"/>
+        <attr name="wave_second_cycle_multiple" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="PTRLayout_Layout">
+        <attr name="layout_type">
+            <flag name="none" value="-1"/>
+            <flag name="header" value="0"/>
+            <flag name="scrollable" value="1"/>
+            <flag name="footer" value="2"/>
+        </attr>
+    </declare-styleable>
+
+</resources>

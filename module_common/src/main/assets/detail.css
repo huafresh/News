@@ -1,0 +1,18 @@
+#title1{
+	font-size:60px;
+	color:black;	
+}
+#title2{
+	font-size:30px;
+	color:#ffcccccc;
+}
+p{
+    font-size:45px;
+    color:#ffaaaaaa;
+    line-height:1.5em;
+
+}
+img{
+    width:100%;
+    display:inline-block;
+}

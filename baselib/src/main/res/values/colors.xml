@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--框架默认使用的主题色-->
+    <color name="colorPrimary">#ffef3031</color>
+    <color name="colorPrimaryDark">#ffef3031</color>
+    <color name="colorAccent">#ffef3031</color>
+
+    <color name="colorPrimary_night">#ffad3633</color>
+    <color name="colorPrimaryDark_night">#ffad3633</color>
+    <color name="colorAccent_night">#ffad3633</color>
+
+    <!--常用颜色-->
+    <color name="color_transparent">#00000000</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="color_black">#ff000000</color>
+
+    <!--用于常用文字样式-->
+
+
+    <color name="color_111">#ff111111</color>
+    <color name="color_222">#ff222222</color>
+    <color name="color_333">#ff333333</color>
+    <color name="color_666">#ff666666</color>
+    <color name="color_999">#ff999999</color>
+    <color name="color_aaa">#ffaaaaaa</color>
+    <color name="color_bbb">#ffbbbbbb</color>
+    <color name="color_ccc">#ffcccccc</color>
+    <color name="color_ddd">#ffdddddd</color>
+    <color name="color_eee">#ffeeeeee</color>
+
+
+    <!--蓝色-->
+    <color name="color_blue">#ff4f9ae8</color>
+    <!--分割线颜色-->
+    <color name="line_color">@color/color_ddd</color>
+
+</resources>

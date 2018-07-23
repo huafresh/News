@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="?android:attr/selectableItemBackground"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <ImageView
+        android:id="@+id/common_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/gold_mall"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <TextView
+        android:id="@+id/common_item_title"
+        style="@style/textStyle_14_black3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:text="@string/me_gold_mall"
+        app:layout_constraintTop_toTopOf="@id/common_item_image"
+        app:layout_constraintBottom_toBottomOf="@id/common_item_image"
+        app:layout_constraintLeft_toRightOf="@id/common_item_image"/>
+
+    <TextView
+        android:id="@+id/common_item_description"
+        style="@style/textStyle_15_black2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:text="月湖赛诗会"
+        android:layout_marginRight="5dp"
+        app:layout_constraintTop_toTopOf="@id/common_item_image"
+        app:layout_constraintBottom_toBottomOf="@id/common_item_image"
+        app:layout_constraintRight_toLeftOf="@+id/common_item_right_arrow"/>
+
+    <ImageView
+        android:id="@+id/common_item_right_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/more_right"
+        app:layout_constraintTop_toTopOf="@id/common_item_image"
+        app:layout_constraintBottom_toBottomOf="@id/common_item_image"
+        app:layout_constraintRight_toRightOf="parent"/>
+
+    <android.support.v7.widget.SwitchCompat
+        android:id="@+id/common_item_switch_compat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@id/common_item_image"
+        app:layout_constraintBottom_toBottomOf="@id/common_item_image"
+        app:layout_constraintRight_toRightOf="parent"/>
+</android.support.constraint.ConstraintLayout>

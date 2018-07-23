@@ -1,0 +1,36 @@
+<resources>
+
+    <!--左右padding-->
+    <dimen name="left_right_padding">12dp</dimen>
+
+    <!--用于签到背景shape-->
+    <dimen name="me_sign_bac_radius">15dp</dimen>
+    <dimen name="me_sign_bac_padding_top">8dp</dimen>
+    <dimen name="me_sign_bac_padding_left">15dp</dimen>
+
+    <!--我页面卡片分割线高度-->
+    <dimen name="me_divider_line_height">8dp</dimen>
+
+    <!--我页面我的数据卡片 垂直分割线的上下margin值-->
+    <dimen name="me_my_data_line_margin">8dp</dimen>
+
+    <!--一般分割线高度-->
+    <dimen name="line_height">0.1dp</dimen>
+
+    <!--我页面，头部未登录时的高度-->
+    <dimen name="me_head_height">189dp</dimen>
+    <!--我页面，我的关注卡片marginTop值-->
+    <dimen name="me_head_notice_margin_top">167dp</dimen>
+    <!--我页面，头部已登录时减少的高度-->
+    <dimen name="me_head_delta_height">38dp</dimen>
+
+    <!--设置item的高度-->
+    <dimen name="setting_item_height">50dp</dimen>
+
+    <!--新闻详情页字体大小-->
+    <dimen name="detail_test_size">15sp</dimen>
+
+    <!--自定义栏目上下margin-->
+    <dimen name="custom_column_margin">10dp</dimen>
+
+</resources>

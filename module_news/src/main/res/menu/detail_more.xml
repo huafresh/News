@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/more_collect"
+        android:title="@string/detail_more_collect_normal"
+        android:icon="@drawable/detail_menu_collect_normal"/>
+    <item
+        android:id="@+id/more_screen_shot"
+        android:title="@string/detail_more_screen_shot"
+        android:icon="@drawable/detail_menu_screen_shot"/>
+    <item
+        android:id="@+id/more_text_size"
+        android:title="@string/detail_more_text_size"
+        android:icon="@drawable/detail_menu_text_size"/>
+    <item
+        android:id="@+id/more_wrong"
+        android:title="@string/detail_more_wrong"
+        android:icon="@drawable/detail_menu_wrong"/>
+    <item
+        android:id="@+id/more_share"
+        android:title="@string/detail_more_share"
+        android:icon="@drawable/detail_menu_share"/>
+    <item
+        android:id="@+id/more_night_mode"
+        android:title="@string/detail_more_night_mode"
+        android:icon="@drawable/detail_menu_night_mode"/>
+</menu>

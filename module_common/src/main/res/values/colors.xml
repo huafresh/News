@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--框架默认使用的主题色-->
+    <color name="colorPrimary">#ffef3031</color>
+    <color name="colorPrimaryDark">#ffef3031</color>
+    <color name="colorAccent">#ffef3031</color>
+
+    <color name="colorPrimary_night">#ffad3633</color>
+    <color name="colorPrimaryDark_night">#ffad3633</color>
+    <color name="colorAccent_night">#ffad3633</color>
+
+    <!--常用颜色-->
+    <color name="color_transparent">#00000000</color>
+    <color name="color_white">#ffffffff</color>
+    <color name="color_black">#ff000000</color>
+
+    <!--用于常用文字样式-->
+
+
+    <color name="color_111">#ff111111</color>
+    <color name="color_222">#ff222222</color>
+    <color name="color_333">#ff333333</color>
+    <color name="color_666">#ff666666</color>
+    <color name="color_999">#ff999999</color>
+    <color name="color_aaa">#ffaaaaaa</color>
+    <color name="color_bbb">#ffbbbbbb</color>
+    <color name="color_ccc">#ffcccccc</color>
+    <color name="color_ddd">#ffdddddd</color>
+    <color name="color_eee">#ffeeeeee</color>
+
+
+    <!--蓝色-->
+    <!--<color name="color_blue">#ff4f9ae8</color>-->
+    <!--分割线颜色-->
+    <color name="line_color">@color/color_ddd</color>
+
+    <!--半白-->
+    <color name="color_white_half">#88ffffff</color>
+
+    <!--分割线颜色-->
+    <!--<color name="line_color">@color/color_ddd</color>-->
+
+    <!--主题颜色-->
+    <color name="color_theme">@color/colorPrimary</color>
+
+
+    <!--背景类颜色-->
+
+    <!--标题栏背景-->
+    <color name="title_bar_bac">@color/color_theme</color>
+    <!--fragment页面背景-->
+    <color name="window_bac">#ffeeeeee</color>
+    <!--底部导航栏背景-->
+    <color name="bottom_bar_bac">#f9eeeeee</color>
+    <!--顶部tab背景-->
+    <color name="top_tab_bac">#f9eeeeee</color>
+
+    <!--我页面可滑动列表背景-->
+    <color name="me_list_bac">@color/color_white</color>
+
+
+    <!--字体类颜色-->
+
+    <!--主题字体颜色-->
+    <color name="text_color_theme">@color/color_theme</color>
+    <!--纯黑色字体颜色-->
+    <color name="text_color_black">@color/color_black</color>
+    <!--黑色字体颜色-->
+    <color name="text_color_black3">#bb000000</color>
+    <!--稍暗黑色字体颜色-->
+    <color name="text_color_black2">@color/color_aaa</color>
+    <!--EditText Hint-->
+    <color name="edit_text_hint">#99aaaaaa</color>
+    <!--纯白色字体颜色-->
+    <color name="text_color_white">#ffffffff</color>
+    <!--白色字体颜色-->
+    <color name="text_color_white1">#eeffffff</color>
+    <!--稍暗白色字体颜色-->
+    <color name="text_color_white2">#99ffffff</color>
+    <!--稍暗白色字体颜色2-->
+    <color name="text_color_white3">#ddffffff</color>
+    <!--蓝色-->
+    <color name="color_blue">#ff1e88e5</color>
+    <!--跟帖等级颜色-->
+    <color name="text_color_follow_level">#f0ffff8d</color>
+
+</resources>

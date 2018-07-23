@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/video_bar"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/title_bar_bac"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_white"
+            android:textSize="13sp"
+            android:text="@string/bar_video"
+            android:layout_marginLeft="25dp"/>
+
+    </RelativeLayout>
+
+    <com.example.hua.framework.widget.CommonTabLayout
+        android:id="@+id/video_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:background="@color/top_tab_bac"
+        app:tabMode="scrollable"
+        app:tabIndicatorColor="@color/color_theme"
+        app:tabTextColor="@color/text_color_black2"
+        app:tabTextSize="15sp"
+        app:tabSelectedTextColor="@color/color_theme"
+        android:visibility="gone"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/video_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

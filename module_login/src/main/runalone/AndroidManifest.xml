@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="hua.news.module_login">
+
+    <application
+        android:name=".runalone.LoginApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".runalone.LoginMainActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".pages.accountlogin.AccountLoginActivity"/>
+        <activity android:name=".pages.phoneregister.PhoneRegisterActivity"/>
+        <activity android:name=".pages.mailregister.MailRegisterActivity"/>
+        <activity android:name=".pages.verifyregister.VerifyPhoneActivity"/>
+
+    </application>
+
+</manifest>

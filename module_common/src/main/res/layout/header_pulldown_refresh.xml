@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_refresh_complete"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:background="#2f1e88e5"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="invisible">
+
+        <TextView
+            style="@style/textStyle_15_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="成功为您推荐"/>
+
+        <TextView
+            android:id="@+id/tv_sum"
+            style="@style/textStyle_15_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10"/>
+
+        <TextView
+            style="@style/textStyle_15_blue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="条新内容"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/refreshing_image"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/earth_refreshing"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_state_notice"
+                style="@style/textStyle_15_black2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refresh_pull_down"/>
+
+            <TextView
+                android:id="@+id/tv_time"
+                style="@style/textStyle_15_black2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/refresh_last_complete_time"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

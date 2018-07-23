@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--蓝色-->
+    <!--<color name="color_blue">#ff4f9ae8</color>-->
+    <!--分割线颜色-->
+    <!--<color name="line_color">@color/color_111</color>-->
+
+    <!--半白-->
+    <color name="color_white_half">#88ffffff</color>
+
+    <!--分割线颜色-->
+    <!--<color name="line_color">@color/color_111</color>-->
+
+    <!--主题颜色-->
+    <color name="color_theme">@color/colorPrimary_night</color>
+
+
+    <!--背景类颜色-->
+
+    <!--标题栏背景-->
+    <color name="title_bar_bac">@color/color_theme</color>
+    <!--fragment页面背景-->
+    <color name="window_bac">#aa111111</color>
+    <!--底部导航栏背景-->
+    <color name="bottom_bar_bac">#99111111</color>
+    <!--顶部tab背景-->
+    <color name="top_tab_bac">#99111111</color>
+
+    <!--我页面可滑动列表背景-->
+    <color name="me_list_bac">#99111111</color>
+
+
+    <!--字体类颜色-->
+
+    <!--主题字体颜色-->
+    <color name="text_color_theme">@color/color_theme</color>
+    <!--纯黑色字体颜色-->
+    <color name="text_color_black">@color/color_ccc</color>
+    <!--黑色字体颜色-->
+    <color name="text_color_black3">#ddcccccc</color>
+    <!--稍暗黑色字体颜色-->
+    <color name="text_color_black2">@color/color_666</color>
+    <!--白色字体颜色-->
+    <color name="text_color_white1">#eeffffff</color>
+    <!--稍暗白色字体颜色-->
+    <color name="text_color_white2">#99ffffff</color>
+    <!--稍暗白色字体颜色2-->
+    <color name="text_color_white3">#ddffffff</color>
+
+    <!--蓝色-->
+    <color name="color_blue">#ff4f9ae8</color>
+
+    <!--跟帖等级颜色-->
+    <color name="text_color_follow_level">#ffffff8d</color>
+
+</resources>

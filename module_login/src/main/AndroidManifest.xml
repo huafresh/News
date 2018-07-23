@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="hua.news.module_login">
+    <application>
+        <activity android:name=".pages.accountlogin.AccountLoginActivity"/>
+        <activity android:name=".pages.phoneregister.PhoneRegisterActivity"/>
+        <activity android:name=".pages.mailregister.MailRegisterActivity"/>
+        <activity android:name=".pages.verifyregister.VerifyPhoneActivity"/>
+
+    </application>
+</manifest>

@@ -1,0 +1,169 @@
+<resources>
+    <string name="app_name">Module_Main</string>
+
+    <!--底部页面名称-->
+    <string name="page_home">首页</string>
+    <string name="page_main">要闻</string>
+    <string name="page_live">直播</string>
+    <string name="page_video">视频</string>
+    <string name="page_me">我</string>
+
+    <!--页面标题栏-->
+    <string name="bar_main">今日要闻</string>
+    <string name="bar_live_hot">热门</string>
+    <string name="bar_live_type">分类</string>
+    <string name="bar_live_subscribe">订阅</string>
+    <string name="bar_video">视频</string>
+
+    <!--我页面，按顺序从上到下-->
+    <string name="me_setting">设置</string>
+    <string name="me_login">登录</string>
+    <string name="me_login_phone">手机号快速注册</string>
+    <string name="me_check_in">签到</string>
+    <string name="me_login_wx">微信登录</string>
+    <string name="me_login_blog">微博登录</string>
+    <string name="me_login_qq">QQ登录</string>
+    <string name="me_my_attention">我关注的</string>
+    <string name="me_my_fans">我的粉丝</string>
+    <string-array name="me_my_notice">
+        <item name="me_my_attention">@string/me_my_attention</item>
+        <item name="me_my_fans">@string/me_my_fans</item>
+    </string-array>
+    <string name="me_subscribe">订阅</string>
+    <string-array name="me_my_data">
+        <item name="me_subscribe">@string/me_subscribe</item>
+        <item name="me_collect">收藏</item>
+        <item name="me_follow_posts">跟帖</item>
+        <item name="me_read">阅读</item>
+    </string-array>
+    <string-array name="me_messages">
+        <item name="me_message">我的消息</item>
+        <item name="me_recent_dynamic">最新动态</item>
+    </string-array>
+    <string name="me_gold_mall">金币商城</string>
+    <string-array name="me_moneys">
+        <item name="me_gold_mall">@string/me_gold_mall</item>
+        <item name="me_gold_task">金币任务</item>
+        <item name="me_my_wallet">我的钱包</item>
+    </string-array>
+    <string-array name="me_others">
+        <item name="me_offline_read">离线阅读</item>
+        <item name="me_day_and_night">夜间模式</item>
+        <item name="me_activity_square">活动广场</item>
+        <item name="me_feed_back">意见反馈</item>
+    </string-array>
+
+    <!--首页栏目-->
+    <string name="page_home_headlines">头条</string>
+    <string name="page_home_video">视频</string>
+    <string name="page_home_fun">娱乐</string>
+    <string name="page_home_sport">体育</string>
+    <string name="page_home_city">深圳</string>
+    <string name="page_home_netease_number">网易号</string>
+    <string name="page_home_money">财经</string>
+    <string name="page_home_technology">科技</string>
+    <string name="page_home_car">汽车</string>
+    <string name="page_home_society">社会</string>
+    <string name="page_home_nba">NBA</string>
+    <string name="page_home_fun_moment">轻松一刻</string>
+    <string name="page_home_joke">段子</string>
+    <string name="page_home_history">历史</string>
+    <string name="page_home_game">游戏</string>
+    <string name="page_home_beauty">美女</string>
+
+    <!--视频栏目-->
+    <string name="page_video_recom">推荐</string>
+    <string name="page_video_film">影视</string>
+    <string name="page_video_funny">搞笑</string>
+    <string name="page_video_beauty">美女</string>
+
+    <!--数字0-->
+    <string name="number_zero">0</string>
+
+    <!--设置-->
+    <string name="setting_title">设置</string>
+    <string name="setting_account">账号设置</string>
+    <string name="setting_system">系统设置</string>
+    <string name="setting_user_setting">个人设置</string>
+    <string name="setting_third_plat">绑定其他平台</string>
+    <string name="setting_font">字体设置</string>
+    <string name="setting_read_preference">阅读偏好</string>
+    <string name="setting_font_size">正文字号</string>
+    <string name="setting_push_main">要闻推送</string>
+    <string name="setting_push_follow_msg">跟帖消息推送</string>
+    <string name="setting_no_wifi_no_down">非Wi_Fi网络下不下载图片</string>
+    <string name="setting_clear_cache">手动清理缓存</string>
+    <string name="setting_scan">扫一扫</string>
+    <string name="setting_update">检查更新</string>
+    <string name="setting_about">关于</string>
+
+    <!--个人设置-->
+    <string name="setting_user_base_info">基本信息</string>
+    <string name="setting_user_mail">邮箱</string>
+    <string name="setting_user_avatar">头像</string>
+    <string name="setting_user_nick_name">昵称</string>
+    <string name="setting_user_sex">性别</string>
+    <string name="setting_user_birth">生日</string>
+    <string name="setting_user_follow_setting">跟帖设置</string>
+    <string name="setting_user_device_name">跟帖设备名称</string>
+    <string name="setting_user_hide_name">匿名跟帖</string>
+    <string name="setting_user_hide_desc">其他网友将不会看到你的用户名、头像和个人主页</string>
+    <string name="setting_user_other_info">其他信息</string>
+    <string name="setting_user_my_level">我的等级</string>
+
+    <!--下拉刷新-->
+    <string name="refresh_pull_down">下拉刷新</string>
+    <string name="refresh_release">释放刷新</string>
+    <string name="refresh_refreshing">正在加载...</string>
+    <string name="refresh_last_complete_time">最后刷新时间:</string>
+    <string name="refresh_complete_preffix">又发现了</string>
+    <string name="refresh_complete_suffix">新内容</string>
+
+    <!--新闻详情页面标题栏更多-->
+    <string name="detail_more_collect_normal">收藏</string>
+    <string name="detail_more_collect_cancel">取消收藏</string>
+    <string name="detail_more_screen_shot">态度截屏</string>
+    <string name="detail_more_text_size">正文字号</string>
+    <string name="detail_more_wrong">我要报错</string>
+    <string name="detail_more_share">分享</string>
+    <string name="detail_more_night_mode">夜间模式</string>
+    <string name="detail_edittext_hint">写跟帖</string>
+    <string name="detail_bottom_send">发送</string>
+    <string name="ifeng_detail_notice">关注</string>
+
+    <!--收藏详情页面-->
+    <string name="collect_detail_title">我的收藏</string>
+    <string name="collect_detail_edit">编辑</string>
+    <string name="collect_detail_no_collect">时光已飞逝，那些重要的事？\n收藏他们吧</string>
+
+    <!--表情相关-->
+    <string name="emoji_prefix">emoji_</string>
+    <string name="emoji_delete">emoji_delete</string>
+
+    <!--自定义栏目页面-->
+    <string name="custom_column_title">切换栏目</string>
+    <string name="custom_column_complete">完成</string>
+    <string name="custom_column_notice">长按排序或删除</string>
+    <string name="custom_column_add_more">点击添加更多栏目</string>
+
+    <!--视频列表页面-->
+    <string name="video_next_notice">即将播放下一视频</string>
+
+    <!--正在开发提示-->
+    <string name="developing_notice">正在开发中...</string>
+
+    <!--广告-->
+    <string name="advert_notice">广告</string>
+
+    <!--评论单位-->
+    <string name="comment_unit">跟帖</string>
+
+    <!--不喜欢标题-->
+    <string name="backreason_title">选择原因，精准屏蔽</string>
+
+    <!--确定、取消-->
+    <string name="confirm">确定</string>
+    <string name="cancel">取消</string>
+
+
+</resources>

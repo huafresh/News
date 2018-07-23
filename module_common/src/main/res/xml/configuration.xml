@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configs>
+    <system-config>
+        <item
+            name="IS_DEBUG"
+            description="是否输出日志信息"
+            value="true"/>
+
+        <!--服务器主机地址-->
+        <item
+            name="URL_BASE"
+            description="主机地址"
+            value="http://192.168.191.1:8080"/>
+
+        <!--登录相关地址-->
+        <item
+            name="URL_LOGIN"
+            description="登录接口后缀"
+            value="login"/>
+
+        <item
+            name="URL_REGISTER"
+            description="注册接口后缀"
+            value="register"/>
+
+        <item
+            name="URL_USER_INFO"
+            description="获取用户信息接口后缀"
+            value="user_info"/>
+
+        <item
+            name="URL_MODIFY_NICK_NAME"
+            description="修改昵称接口后缀"
+            value="modify/nick_name"/>
+
+        <item
+            name="URL_MODIFY_AVATAR"
+            description="修改昵称接口后缀"
+            value="modify/avatar"/>
+
+        <item
+            name="URL_CHECK_REGISTER"
+            description="检查邮箱或者手机号是否注册过"
+            value="check_register"/>
+
+        <!--请求栏目列表-->
+        <item
+            name="URL_COLUMN_LIST"
+            description="请求栏目列表"
+            value="column"/>
+
+        <!--请求视频列表数据-->
+        <item
+            name="URL_VIDEO_LIST"
+            description="请求视频列表数据"
+            value="video"/>
+
+
+        <!--请求普通新闻数据相关-->
+        <item
+            name="URL_CHANNEL_NEWS_LIST"
+            description="获取频道新闻列表信息"
+            value="news/normal/preview"/>
+
+        <item
+            name="URL_NORMAL_NEWS_DETAIL"
+            description="获取图文新闻详情"
+            value="news/normal/detail"/>
+
+        <!--收藏-->
+        <item
+            name="URL_COLLECT_ADD"
+            description="添加收藏"
+            value="collect/add"/>
+        <item
+            name="URL_COLLECT_CANCEL"
+            description="取消收藏"
+            value="collect/cancel"/>
+        <item
+            name="URL_COLLECT_QEURY"
+            description="查询收藏列表"
+            value="collect/query"/>
+
+    </system-config>
+</configs>

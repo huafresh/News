@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="53dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/edt_phone"
+                style="@style/EditTextStyle_register"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/phone_regiser_phone_hint"
+                android:paddingLeft="16dp"
+                android:paddingRight="30dp"
+                android:maxLength="11"
+                android:maxLines="1"
+                android:inputType="phone"/>
+
+            <LinearLayout
+                android:id="@+id/ll_phone_cancel"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_text_cancel" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:background="@drawable/shap_edit_text_bac"
+            android:gravity="center_vertical"
+            android:text="@string/phone_register_suffix"
+            android:textColor="@color/text_color_black"
+            android:textStyle="bold"
+            android:layout_marginLeft="13dp"
+            android:paddingLeft="10dp"/>
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/textStyle_12_black2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shap_verify_notice_text_bac"
+        android:gravity="center"
+        android:text="@string/phone_register_verify_notice_previous" />
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/phone_register_next"
+        android:textColor="@color/text_color_white"
+        android:background="@drawable/shap_button_red"
+        android:textSize="14sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="@string/phone_register_warning"
+        android:lineSpacingExtra="3dp"
+        android:textSize="13sp"/>
+
+</LinearLayout>

@@ -1,0 +1,155 @@
+<resources>
+
+    <!--App主题-->
+    <style name="AppTheme" parent="FrameworkTheme">
+        <item name="android:listDivider">@drawable/follow_history_item_divider</item>
+    </style>
+
+    <style name="detail_menu_style" parent="Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+    </style>
+
+    <!--文字style开始-->
+
+    <style name="textStyle_15_black">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black</item>
+    </style>
+
+    <style name="textStyle_16_black3">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/text_color_black3</item>
+    </style>
+
+    <style name="textStyle_15_black2">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_16_black2">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_14_black3">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_black3</item>
+    </style>
+
+    <style name="textStyle_15_black3">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_black3</item>
+    </style>
+
+    <style name="textStyle_12_black3">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_black3</item>
+    </style>
+
+    <style name="textStyle_12_red">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/color_theme</item>
+    </style>
+
+    <style name="textStyle_14_black2">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_13_black2">
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_12_black2">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_11_black2">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/text_color_black2</item>
+    </style>
+
+    <style name="textStyle_15_white">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_white1</item>
+    </style>
+    <style name="textStyle_16_white">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_color_white1</item>
+    </style>
+
+    <style name="textStyle_17_white">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_color_white1</item>
+    </style>
+
+    <style name="textStyle_15_white2">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_color_white2</item>
+    </style>
+
+    <style name="textStyle_14_red">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_theme</item>
+        <item name="android:background">@drawable/shap_login_button_bac</item>
+    </style>
+
+    <style name="textStyle_15_red">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/color_theme</item>
+        <item name="android:background">@drawable/shap_login_button_bac</item>
+    </style>
+
+    <style name="textStyle_16_red">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/color_theme</item>
+        <item name="android:background">@drawable/shap_login_button_bac</item>
+    </style>
+
+    <style name="textStyle_11_white">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/text_color_white1</item>
+    </style>
+
+    <style name="textStyle_14_white">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_color_white1</item>
+    </style>
+
+    <style name="textStyle_18_blue">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/color_blue</item>
+    </style>
+
+    <style name="textStyle_15_blue">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/color_blue</item>
+    </style>
+
+    <!--文字style结束-->
+
+    <style name="EditTextStyle_login">
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/edit_text_hint</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="EditTextStyle_register">
+        <item name="android:background">@drawable/shap_edit_text_bac</item>
+        <item name="android:textColorHint">@color/text_color_black2</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="user_center_collaps_toolbar_title">
+        <item name="android:textSize">19sp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+    <style name="user_center_expand_toolbar_title">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">@color/text_color_white</item>
+    </style>
+
+</resources>

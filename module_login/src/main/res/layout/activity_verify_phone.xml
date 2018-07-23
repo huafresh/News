@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_white"
+    android:orientation="vertical"
+    android:paddingLeft="25dp"
+    android:paddingRight="25dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="57dp">
+
+        <TextView
+            style="@style/textStyle_15_black3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/verify_register_notice_prefix" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            style="@style/textStyle_15_black3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="134****7892" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_marginTop="21dp">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <EditText
+                android:id="@+id/edt_verify_code"
+                style="@style/EditTextStyle_register"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="@string/verify_register_code_hint"
+                android:inputType="number"
+                android:paddingLeft="16dp" />
+
+            <LinearLayout
+                android:id="@+id/ll_verify_code_cancel"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_text_cancel" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_send_verify_code"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="13dp"
+            android:layout_weight="2"
+            android:background="@drawable/shap_edit_text_bac"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp"
+            android:text="@string/verify_register_send_again"
+            android:textColor="@color/color_blue"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="19dp">
+
+        <EditText
+            android:id="@+id/edt_password"
+            style="@style/EditTextStyle_register"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="@string/verify_register_pwd_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textPassword"
+            android:maxLength="16"
+            android:paddingLeft="16dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true">
+
+            <LinearLayout
+                android:id="@+id/ll_password_cancel"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:visibility="gone"
+                android:layout_marginRight="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/edit_text_cancel" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_eye"
+                android:layout_width="30dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:layout_marginRight="16dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/eye_open" />
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shap_button_red"
+        android:text="@string/verify_register_button_text"
+        android:textColor="@color/text_color_white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:lineSpacingExtra="3dp"
+        android:text="@string/phone_register_warning"
+        android:textSize="13sp" />
+
+</LinearLayout>

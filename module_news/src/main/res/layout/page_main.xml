@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/main_news_bar"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:background="@color/title_bar_bac"
+        android:gravity="center_vertical"
+        android:fitsSystemWindows="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_white"
+            android:textSize="13sp"
+            android:text="@string/bar_main"
+            android:layout_marginLeft="25dp"/>
+
+    </RelativeLayout>
+
+    <com.example.hua.framework.widget.CommonLoadingLayout
+        android:id="@+id/main_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/page_main"
+            android:textSize="20sp"
+            android:background="@color/window_bac"/>
+
+        <include layout="@layout/view_load_ing" />
+
+        <include layout="@layout/view_load_error" />
+    </com.example.hua.framework.widget.CommonLoadingLayout>
+
+</LinearLayout>

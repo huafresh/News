@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:overScrollMode="never">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_bottom_article"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_webview_contain"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+
+        <!--xxx人喜欢-->
+        <View
+            android:id="@+id/love_view_bac"
+            android:layout_width="160dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/shap_button_theme"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ll_webview_contain"/>
+
+        <com.example.hua.framework.widget.HeartView
+            android:id="@+id/iv_love"
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            app:FillColor="@color/color_theme"
+            app:HeartStyle="stroke"
+            app:StrokeColor="@color/color_white"
+            app:StrokeWidth="1dp"
+            app:layout_constraintBottom_toBottomOf="@id/love_view_bac"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/tv_love"
+            app:layout_constraintTop_toTopOf="@id/love_view_bac"/>
+
+        <TextView
+            android:id="@+id/tv_love"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="0人喜欢"
+            android:textColor="@color/color_white"
+            app:layout_constraintBottom_toBottomOf="@id/iv_love"
+            app:layout_constraintLeft_toRightOf="@id/iv_love"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_love"/>
+
+
+        <!--分享到-->
+        <View
+            android:id="@+id/view_divider_left"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line_height"
+            android:background="@color/line_color"
+            app:layout_constraintBottom_toTopOf="@+id/tv_share_to"
+            app:layout_constraintLeft_toLeftOf="@id/love_view_bac"
+            app:layout_constraintRight_toLeftOf="@+id/tv_share_to"
+            app:layout_constraintTop_toBottomOf="@+id/tv_share_to"/>
+
+        <TextView
+            android:id="@+id/tv_share_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:text="分享到"
+            android:textColor="@color/text_color_black2"
+            app:layout_constraintLeft_toRightOf="@id/view_divider_left"
+            app:layout_constraintRight_toLeftOf="@+id/view_divider_right"
+            app:layout_constraintTop_toBottomOf="@id/love_view_bac"/>
+
+        <View
+            android:id="@+id/view_divider_right"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/line_height"
+            android:background="@color/line_color"
+            app:layout_constraintBottom_toTopOf="@id/tv_share_to"
+            app:layout_constraintLeft_toRightOf="@id/tv_share_to"
+            app:layout_constraintRight_toRightOf="@id/love_view_bac"
+            app:layout_constraintTop_toBottomOf="@id/tv_share_to"/>
+
+        <!--分享图标-->
+        <ImageView
+            android:id="@+id/iv_wechat_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:src="@drawable/wechat_share"
+            app:layout_constraintLeft_toLeftOf="@id/love_view_bac"
+            app:layout_constraintRight_toLeftOf="@+id/iv_wechat_comment_share"
+            app:layout_constraintTop_toBottomOf="@id/tv_share_to"/>
+
+        <ImageView
+            android:id="@+id/iv_wechat_comment_share"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/wechat_comment_share"
+            app:layout_constraintBottom_toBottomOf="@id/iv_wechat_share"
+            app:layout_constraintLeft_toRightOf="@id/iv_wechat_share"
+            app:layout_constraintRight_toLeftOf="@+id/iv_sina_share"
+            app:layout_constraintTop_toTopOf="@id/iv_wechat_share"/>
+
+        <ImageView
+            android:id="@+id/iv_sina_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/sina_share"
+            app:layout_constraintBottom_toBottomOf="@id/iv_wechat_share"
+            app:layout_constraintLeft_toRightOf="@id/iv_wechat_comment_share"
+            app:layout_constraintRight_toRightOf="@id/love_view_bac"
+            app:layout_constraintTop_toTopOf="@id/iv_wechat_share"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/line_height"
+            app:layout_constraintTop_toBottomOf="@id/iv_wechat_share"
+            android:layout_marginTop="50dp"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
