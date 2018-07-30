@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+
 /**
  * 通用刷新布局，屏蔽底层实现
  *
@@ -15,13 +17,7 @@ import android.widget.FrameLayout;
 
 public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout {
 
-    private static final int STYLE_COMM = 0;
-    private IHeaderStyle headerStyle = new DefaultHeaderStyle();
-    private IFooterStyle footerStyle = new DefaultFooterStyle();
-
-    private static IRefreshLayoutFactory sRefreshLayoutFactory = new DefaultRefreshLayoutFactory();
-
-    private IRefreshLayout refreshLayout;
+    private BaseRefreshLayout refreshLayout;
 
     public SupportRefreshLayout(Context context) {
         this(context, null);
@@ -37,9 +33,9 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
-        refreshLayout = sRefreshLayoutFactory.create(context);
-        refreshLayout.setHeader(headerStyle);
-        refreshLayout.setFooter(footerStyle);
+        refreshLayout = new SmartRefreshImpl(context);
+        refreshLayout.setHeader(new ClassicRefreshHeader(context));
+        refreshLayout.setFooter(new ClassicRefreshFooter(context));
     }
 
     @Override
@@ -77,17 +73,21 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        calculateContentView();
+    }
+
+    private void calculateContentView() {
         if (getChildCount() > 0) {
             View child = getChildAt(0);
             ViewGroup.LayoutParams childParams = child.getLayoutParams();
             removeView(child);
             refreshLayout.setContentView(child);
-            addView(refreshLayout.getRefreshLayout(), childParams);
+            addView(refreshLayout.getContainer(), childParams);
         }
     }
 
     @Override
-    public void setHeader(IHeaderStyle header) {
+    public void setHeader(IHeader header) {
         refreshLayout.setHeader(header);
     }
 
@@ -97,13 +97,8 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     }
 
     @Override
-    public void setFooter(IFooterStyle footer) {
+    public void setFooter(IFooter footer) {
         refreshLayout.setFooter(footer);
-    }
-
-    @Override
-    public ViewGroup getRefreshLayout() {
-        return refreshLayout.getRefreshLayout();
     }
 
     @Override
@@ -126,30 +121,6 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
         refreshLayout.finishLoadMore(success);
     }
 
-    public void setHeaderStyle(IHeaderStyle headerStyle) {
-        this.headerStyle = this.headerStyle;
-    }
-
-    public void setFooterStyle(IFooterStyle footerStyle) {
-        this.footerStyle = this.footerStyle;
-    }
-
-    private static class DefaultHeaderStyle implements IHeaderStyle{
-
-        @Override
-        public int getStyle() {
-            return STYLE_COMM;
-        }
-    }
-
-    private static class DefaultFooterStyle implements IFooterStyle{
-
-        @Override
-        public int getStyle() {
-            return STYLE_COMM;
-        }
-    }
-
     private static class DefaultRefreshLayoutFactory implements IRefreshLayoutFactory {
 
         @Override
@@ -158,11 +129,16 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
         }
     }
 
-    public interface IRefreshLayoutFactory {
+    /**
+     * 底层刷新布局实现类工厂接口。
+     * 默认实现是使用{@link SmartRefreshLayout}下拉刷新库
+     *
+     * @deprecated 底层实现不应该给上层替换
+     */
+    @Deprecated
+    interface IRefreshLayoutFactory {
         IRefreshLayout create(Context context);
     }
 
-    public static void setsRefreshLayoutFactory(IRefreshLayoutFactory factory){
-        SupportRefreshLayout.sRefreshLayoutFactory = factory;
-    }
+
 }

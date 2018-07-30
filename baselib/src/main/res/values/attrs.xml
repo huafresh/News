@@ -75,7 +75,7 @@
     <declare-styleable name="PTRLayout_Layout">
         <attr name="layout_type">
             <flag name="none" value="-1"/>
-            <flag name="header" value="0"/>
+            <flag name="refreshCore" value="0"/>
             <flag name="scrollable" value="1"/>
             <flag name="footer" value="2"/>
         </attr>

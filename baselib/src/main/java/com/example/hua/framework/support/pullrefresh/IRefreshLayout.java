@@ -12,15 +12,13 @@ import android.view.ViewGroup;
  * @version 2018/4/4 10:57
  */
 
-public interface IRefreshLayout {
+public interface IRefreshLayout{
 
-    void setHeader(IHeaderStyle header);
+    void setHeader(IHeader header);
 
     void setContentView(View view);
 
-    void setFooter(IFooterStyle footer);
-
-    ViewGroup getRefreshLayout();
+    void setFooter(IFooter footer);
 
     void setOnRefreshListener(OnRefreshListener listener);
 
@@ -29,19 +27,6 @@ public interface IRefreshLayout {
     void finishRefresh(boolean success);
 
     void finishLoadMore(boolean success);
-
-    /**
-     * 这里定义的header不是真正的header布局接口，真正的header布局接口要由具体的刷新库提供
-     * 这里返回的整型常量的具体含义需要由{@link IRefreshLayout}的实现类中的{@link IRefreshLayout#setHeader}
-     * 方法解释。
-     */
-    interface IHeaderStyle {
-        int getStyle();
-    }
-
-    interface IFooterStyle {
-        int getStyle();
-    }
 
     interface OnRefreshListener {
         void onRefresh(IRefreshLayout refreshLayout);

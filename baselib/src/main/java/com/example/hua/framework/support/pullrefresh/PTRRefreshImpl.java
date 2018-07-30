@@ -13,9 +13,10 @@ import com.example.hua.framework.wrapper.pullrefresh.PTRLayout;
  * @version 2018/4/4 11:15
  */
 
-public class PTRRefreshImpl implements IRefreshLayout {
+class PTRRefreshImpl extends BaseRefreshLayout {
+
     @Override
-    public void setHeader(IHeaderStyle header) {
+    public void setHeader(IHeader header) {
 
     }
 
@@ -25,13 +26,8 @@ public class PTRRefreshImpl implements IRefreshLayout {
     }
 
     @Override
-    public void setFooter(IFooterStyle footer) {
+    public void setFooter(IFooter footer) {
 
-    }
-
-    @Override
-    public ViewGroup getRefreshLayout() {
-        return null;
     }
 
     @Override
@@ -52,5 +48,11 @@ public class PTRRefreshImpl implements IRefreshLayout {
     @Override
     public void finishLoadMore(boolean success) {
 
+    }
+
+
+    @Override
+    public ViewGroup getContainer() {
+        return null;
     }
 }

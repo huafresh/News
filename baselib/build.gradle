@@ -57,7 +57,7 @@ dependencies {
     api 'com.alibaba:arouter-api:1.2.2'
 
     //下拉刷新
-    api 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
 
     //banner
     api 'com.youth.banner:banner:1.4.9'

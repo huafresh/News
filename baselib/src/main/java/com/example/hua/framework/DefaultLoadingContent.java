@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.hua.framework.interfaces.IWindow;
+import com.example.hua.framework.support.pullrefresh.IRefreshLayout;
 
 /**
  * 默认使用的进度对话框。

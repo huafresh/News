@@ -6,20 +6,46 @@
     android:layout_width="match_parent"
     android:layout_height="60dp">
 
+    <android.support.constraint.Guideline
+        android:id="@+id/guide_line_half"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
     <ImageView
+        android:id="@+id/iv_arrow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src=""/>
+        android:layout_marginRight="50dp"
+        android:src="@drawable/icon_default_refresh_arrow"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/guide_line_half"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/iv_loading"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@drawable/icon_default_refresh_loading"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@id/iv_arrow"
+        app:layout_constraintLeft_toLeftOf="@id/iv_arrow"
+        app:layout_constraintRight_toRightOf="@id/iv_arrow"
+        app:layout_constraintTop_toTopOf="@id/iv_arrow"/>
+
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:textColor="#999999"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/tv_last_time"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/iv_arrow"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed"
         tools:text="下拉可以刷新"
@@ -33,8 +59,7 @@
         android:textColor="#999999"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/tv_title"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
         tools:ignore="SmallSp"
         tools:text="上次刷新: "
