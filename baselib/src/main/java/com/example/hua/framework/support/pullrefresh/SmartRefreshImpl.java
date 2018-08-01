@@ -49,6 +49,11 @@ class SmartRefreshImpl extends BaseRefreshLayout {
     }
 
     @Override
+    public void enableLoadMore(boolean enable) {
+
+    }
+
+    @Override
     public void setFooter(IFooter footer) {
         if (footer != null) {
             smartRefreshLayout.setRefreshFooter(new SmartClassicRefreshFooter(footer, this));
@@ -83,6 +88,16 @@ class SmartRefreshImpl extends BaseRefreshLayout {
     @Override
     public void finishLoadMore(boolean success) {
         smartRefreshLayout.finishLoadMore(success);
+    }
+
+    @Override
+    public boolean isSupportAutoLoadMore() {
+        return true;
+    }
+
+    @Override
+    public void enableAutoLoadMore(boolean enable) {
+        smartRefreshLayout.setEnableAutoLoadMore(enable);
     }
 
     @Override

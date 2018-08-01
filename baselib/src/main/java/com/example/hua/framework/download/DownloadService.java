@@ -32,7 +32,7 @@ import java.util.concurrent.TimeUnit;
  * @author hua
  * @version 2018/5/3 20:07
  */
-
+@Deprecated
 public class DownloadService extends Service {
 
     private IBinder binder;

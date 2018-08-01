@@ -6,7 +6,7 @@ import android.support.annotation.MainThread;
  * @author hua
  * @version 2018/5/3 20:08
  */
-
+@Deprecated
 public interface IDownloadListener {
 
     @MainThread

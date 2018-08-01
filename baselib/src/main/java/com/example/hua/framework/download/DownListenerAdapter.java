@@ -4,7 +4,7 @@ package com.example.hua.framework.download;
  * @author hua
  * @version 2018/5/4 9:08
  */
-
+@Deprecated
 public class DownListenerAdapter implements IDownloadListener {
 
     @Override

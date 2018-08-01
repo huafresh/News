@@ -9,7 +9,8 @@ import android.widget.FrameLayout;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 /**
- * 通用刷新布局，屏蔽底层实现
+ * 通用刷新布局，屏蔽底层实现。
+ * 只需要使用此控件包裹需要添加刷新功能的布局即可。
  *
  * @author hua
  * @version 2018/4/4 10:52
@@ -18,6 +19,8 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout {
 
     private BaseRefreshLayout refreshLayout;
+    private IFooter footer;
+    private Context context;
 
     public SupportRefreshLayout(Context context) {
         this(context, null);
@@ -33,9 +36,9 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     }
 
     private void init(Context context, AttributeSet attrs, int defStyle) {
+        this.context = context;
         refreshLayout = new SmartRefreshImpl(context);
         refreshLayout.setHeader(new ClassicRefreshHeader(context));
-        refreshLayout.setFooter(new ClassicRefreshFooter(context));
     }
 
     @Override
@@ -97,8 +100,17 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     }
 
     @Override
+    public void enableLoadMore(boolean enable) {
+        refreshLayout.enableLoadMore(enable);
+        if (enable && this.header == null) {
+            refreshLayout.setFooter(new ClassicRefreshFooter(context));
+        }
+    }
+
+    @Override
     public void setFooter(IFooter footer) {
         refreshLayout.setFooter(footer);
+        this.footer = footer;
     }
 
     @Override
@@ -119,6 +131,16 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
     @Override
     public void finishLoadMore(boolean success) {
         refreshLayout.finishLoadMore(success);
+    }
+
+    @Override
+    public boolean isSupportAutoLoadMore() {
+        return refreshLayout.isSupportAutoLoadMore();
+    }
+
+    @Override
+    public void enableAutoLoadMore(boolean enable) {
+        refreshLayout.enableAutoLoadMore(enable);
     }
 
     private static class DefaultRefreshLayoutFactory implements IRefreshLayoutFactory {

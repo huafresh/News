@@ -13,7 +13,7 @@ import com.example.hua.framework.wrapper.pullrefresh.PTRLayout;
  * @version 2018/4/4 11:15
  */
 
-class PTRRefreshImpl extends BaseRefreshLayout {
+abstract class PTRRefreshImpl extends BaseRefreshLayout {
 
     @Override
     public void setHeader(IHeader header) {
@@ -48,6 +48,11 @@ class PTRRefreshImpl extends BaseRefreshLayout {
     @Override
     public void finishLoadMore(boolean success) {
 
+    }
+
+    @Override
+    public boolean isSupportAutoLoadMore() {
+        return false;
     }
 
 
