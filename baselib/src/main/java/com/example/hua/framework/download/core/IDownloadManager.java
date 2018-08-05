@@ -1,6 +1,5 @@
-package com.example.hua.framework.download;
+package com.example.hua.framework.download.core;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
 
 /**
@@ -8,17 +7,7 @@ import android.support.annotation.Nullable;
  * Created by hua on 2018/7/29.
  */
 
-public abstract class DownloadManager {
-
-    /**
-     * obtain a {@link DownloadManager} instance
-     *
-     * @param context Context
-     * @return {@link DownloadManager}
-     */
-    public static DownloadManager get(Context context) {
-        return null;
-    }
+public interface IDownloadManager {
 
     /**
      * start the download.
@@ -30,7 +19,7 @@ public abstract class DownloadManager {
      * @return an ID for the download. This ID is used to make future
      * calls related to this download.
      */
-    public abstract String start(String url, DownloadListener listener);
+    String start(String url, DownloadListener listener);
 
     /**
      * start the download.
@@ -49,7 +38,7 @@ public abstract class DownloadManager {
      * @return an ID for the download. This ID is used to make future
      * calls related to this download.
      */
-    public abstract String start(DownloadRequest request, DownloadListener listener);
+    String start(DownloadRequest request, DownloadListener listener);
 
     /**
      * pause the download.
@@ -59,7 +48,7 @@ public abstract class DownloadManager {
      * @param id an ID for the download.
      * @return true success, false otherwise
      */
-    public abstract boolean pause(String id) throws UnsupportedOperationException;
+    boolean pause(String id) throws UnsupportedOperationException;
 
     /**
      * resume the download.
@@ -69,7 +58,7 @@ public abstract class DownloadManager {
      * @param id an ID for the download.
      * @return true success, false otherwise
      */
-    public abstract boolean resume(String id) throws UnsupportedOperationException;
+    boolean resume(String id) throws UnsupportedOperationException;
 
     /**
      * get the {@link DownloadStatus} related to this download.
@@ -78,7 +67,7 @@ public abstract class DownloadManager {
      * @param id an ID for the download.
      * @return the download status
      */
-    public abstract @Nullable
+    @Nullable
     DownloadStatus getDownloadStatus(String id) throws UnsupportedOperationException;
 
     /**
@@ -90,7 +79,7 @@ public abstract class DownloadManager {
      * @param id an ID for the download.
      * @return the path of the file
      */
-    public abstract @Nullable
+    @Nullable
     String getFilePath(String id) throws UnsupportedOperationException;
 
     /**
@@ -101,7 +90,6 @@ public abstract class DownloadManager {
      * @param id an ID for the download.
      * @return {@link DownloadRecord}
      */
-    public abstract @Nullable
     DownloadRecord queryDownloadRecord(String id) throws UnsupportedOperationException;
 
     /**
@@ -115,5 +103,5 @@ public abstract class DownloadManager {
      * @param ids IDs
      * @return true success, false otherwise
      */
-    public abstract boolean delete(String... ids) throws UnsupportedOperationException;
+    boolean delete(String... ids) throws UnsupportedOperationException;
 }

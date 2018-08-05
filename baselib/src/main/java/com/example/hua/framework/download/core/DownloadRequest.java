@@ -1,7 +1,6 @@
-package com.example.hua.framework.download;
+package com.example.hua.framework.download.core;
 
 import android.net.ConnectivityManager;
-import android.net.Uri;
 import android.support.annotation.IntDef;
 
 /**
@@ -18,9 +17,8 @@ public class DownloadRequest {
     public @interface NetworkType {
     }
 
-    private Uri uri;
     private String url;
-    private String saveDirPath;
+    private String saveDir;
     private String saveName;
     private @NetworkType
     int allowNetworkType;
@@ -31,18 +29,16 @@ public class DownloadRequest {
 
     private DownloadRequest(String url) {
         this.url = url;
-        this.uri = Uri.parse(url);
         this.allowNetworkType = NETWORK_TYPE_WIFI;
     }
 
     public DownloadRequest setUrl(String url) {
         this.url = url;
-        this.uri = Uri.parse(url);
         return this;
     }
 
-    public DownloadRequest setSaveDirPath(String saveDirPath) {
-        this.saveDirPath = saveDirPath;
+    public DownloadRequest setSaveDir(String saveDir) {
+        this.saveDir = saveDir;
         return this;
     }
 
@@ -60,8 +56,8 @@ public class DownloadRequest {
         return url;
     }
 
-    public String getSaveDirPath() {
-        return saveDirPath;
+    public String getSaveDir() {
+        return saveDir;
     }
 
     public String getSaveName() {

@@ -12,13 +12,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 监听网络可用状态
+ * 监听网络可用状态，回调指定方法。
  * Created by hua on 2018/7/29.
  */
 
 class NetworkTypeUtil {
     private Context context;
-    private List<NetworkTypeTask> tasks = new ArrayList<>();
+    private List<INetworkTypeTask> tasks = new ArrayList<>();
     @SuppressLint("StaticFieldLeak")
     private static NetworkTypeUtil sInstance;
 
@@ -40,22 +40,32 @@ class NetworkTypeUtil {
         return sInstance;
     }
 
-    void enqueue(NetworkTypeTask task) {
+    void add(INetworkTypeTask task) {
         tasks.add(task);
+        if (isNetworkAvailable(task)){
+            task.onAvailable();
+        } else {
+            task.onDisAvailable();
+        }
+    }
+
+    void remove(INetworkTypeTask task){
+        tasks.remove(task);
     }
 
     private void runTasks() {
         int size = tasks.size();
         for (int i = 0; i < size; i++) {
-            NetworkTypeTask task = tasks.get(0);
+            INetworkTypeTask task = tasks.get(0);
             if (isNetworkAvailable(task)) {
-                task.run();
-                tasks.remove(task);
+                task.onAvailable();
+            } else {
+                task.onDisAvailable();
             }
         }
     }
 
-    private boolean isNetworkAvailable(NetworkTypeTask task) {
+    private boolean isNetworkAvailable(INetworkTypeTask task) {
         int allowNetworkType = task.getAllowNetworkType();
         ConnectivityManager manager = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);

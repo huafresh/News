@@ -1,4 +1,6 @@
-package com.example.hua.framework.download;
+package com.example.hua.framework.download.core;
+
+import java.io.File;
 
 /**
  * 下载记录，对应一个下载条目
@@ -6,19 +8,37 @@ package com.example.hua.framework.download;
  */
 
 public class DownloadRecord {
-    private long id;
+    private String id;
     private String dirPath;
     private String name;
     private String savePath;
     private String mimeType;
     private long downloadedSize;
     private long totalSize;
+    private DownloadStatus status;
+    private String errorMessage;
 
-    public long getId() {
+    public String getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
+    }
+
+    public DownloadStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(DownloadStatus status) {
+        this.status = status;
+    }
+
+    public String  getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String  id) {
         this.id = id;
     }
 
@@ -39,11 +59,7 @@ public class DownloadRecord {
     }
 
     public String getSavePath() {
-        return savePath;
-    }
-
-    public void setSavePath(String savePath) {
-        this.savePath = savePath;
+        return dirPath + File.separator + name;
     }
 
     public String getMimeType() {

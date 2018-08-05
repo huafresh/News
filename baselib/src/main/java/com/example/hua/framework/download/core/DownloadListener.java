@@ -1,4 +1,4 @@
-package com.example.hua.framework.download;
+package com.example.hua.framework.download.core;
 
 /**
  * download listener
@@ -47,7 +47,7 @@ public interface DownloadListener {
 
     /**
      * Notifies the fail of the download.
-     * a failed download can be resume by call {@link DownloadManager#start}
+     * a failed download can be resume by call {@link IDownloadManager#start} again.
      *
      * @param record  a {@link DownloadRecord} recorded everything related to this download.
      * @param message description of the reason for the failure

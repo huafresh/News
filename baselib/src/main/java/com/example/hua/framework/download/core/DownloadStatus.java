@@ -1,4 +1,4 @@
-package com.example.hua.framework.download;
+package com.example.hua.framework.download.core;
 
 /**
  * 下载状态
