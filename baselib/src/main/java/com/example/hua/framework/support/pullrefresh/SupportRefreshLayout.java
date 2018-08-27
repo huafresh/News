@@ -20,6 +20,7 @@ public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout 
 
     private BaseRefreshLayout refreshLayout;
     private IFooter footer;
+    private IHeader header;
     private Context context;
 
     public SupportRefreshLayout(Context context) {

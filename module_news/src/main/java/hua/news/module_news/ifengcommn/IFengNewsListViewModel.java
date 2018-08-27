@@ -155,13 +155,13 @@ public class IFengNewsListViewModel extends AndroidViewModel {
                 try {
                     return modelClass.getConstructor(Application.class, String.class).newInstance(application, channel);
                 } catch (NoSuchMethodException e) {
-                    throw new RuntimeException("Cannot create an instance of " + modelClass, e);
+                    throw new RuntimeException("Cannot build an instance of " + modelClass, e);
                 } catch (IllegalAccessException e) {
-                    throw new RuntimeException("Cannot create an instance of " + modelClass, e);
+                    throw new RuntimeException("Cannot build an instance of " + modelClass, e);
                 } catch (InstantiationException e) {
-                    throw new RuntimeException("Cannot create an instance of " + modelClass, e);
+                    throw new RuntimeException("Cannot build an instance of " + modelClass, e);
                 } catch (InvocationTargetException e) {
-                    throw new RuntimeException("Cannot create an instance of " + modelClass, e);
+                    throw new RuntimeException("Cannot build an instance of " + modelClass, e);
                 }
             }
             return super.create(modelClass);

@@ -57,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
         mView = onCreateView(inflater, container);
         View wrapperView = mView;
         if (isEnableLoadManager()) {
-            mLoadService = LoadLayoutManager.getInstance().register(mView);
+            mLoadService = LoadLayoutManager.getInstance().wrapper(mView);
             wrapperView = mLoadService.getContainerLayout();
         }
         return wrapperView;

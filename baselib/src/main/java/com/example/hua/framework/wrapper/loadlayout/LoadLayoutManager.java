@@ -7,7 +7,6 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,30 +15,23 @@ import java.util.List;
 /**
  * Description:
  * <p>
- * 有时界面的显示可能会包含加载中视图、加载错误视图和没有数据视图等。
- * 如果每个页面都分别包含上述视图，然后在需要的时候进行显示和隐藏。这种实现方式显然不够优雅。
- * 使用此类可以轻松简便的实现上述的需求。实现参考了网友实现的LoadSir。
+ * 有时界面的显示可能会包含以下几个视图：加载中视图、加载错误视图和没有数据视图等。
+ * 如果每个页面都分别包含上述视图，然后在需要的时候进行显示和隐藏的话，工作量就大了。
+ * 使用此类可以轻松简便的实现上述需求。实现参考了网友实现的LoadSir。
  * <p>
  * 使用方法：
- * 1、调用{@link #createLoadViewPool}方法创建视图池
- * 2、调用{@link #register}方法注册需要进行布局替换的目标，可以是Activity或者view。
- * 在Fragment中使用有点不同，需在onCreateView中添加如下代码：
- * <code>
- * View view = inflater.inflate(R.layout.fragment_normal_news_detail,container,false);
- * LoadService mLoadService = LoadLayoutManager.getInstance().register(view);
- * wrapperView = mLoadService.getContainerLayout();
- * return wrapperView;
- * </code>
+ * 1、调用{@link #buildLoadViewPool}方法创建视图池，即加载中视图、加载错误视图和没有数据视图等等
+ * 2、调用{@link #wrapper}方法包裹需要进行布局替换的目标，可以是Activity或者view。
  * <p>
- * 3、根据拿到的{@link LoadService}实例，调用{@link LoadService#showLoadView}方法传入特定布局的标识，
- * 显示特定布局。
+ * 3、使用返回的{@link LoadLayout}控制相关视图的显示和隐藏
  *
  * @author hua
  * @version : 2017/9/26
  */
 
 public class LoadLayoutManager {
-    private static final String TAG = "LoadManager";
+    private static final String TAG = "LoadLayoutManager";
+    public static final int DEFAULT_POOL_TYPE = 0;
     private SparseArray<LoadViewPool> mLoadBuilders;
 
     private LoadLayoutManager() {
@@ -54,20 +46,26 @@ public class LoadLayoutManager {
         private static final LoadLayoutManager sInstance = new LoadLayoutManager();
     }
 
-    private void addLoadBuilder(LoadViewPool loadViewPool) {
-        if (loadViewPool != null) {
-            mLoadBuilders.put(0, loadViewPool);
-        }
-    }
-
     private void addLoadBuilder(LoadViewPool loadViewPool, int type) {
         if (loadViewPool != null) {
             mLoadBuilders.put(type, loadViewPool);
         }
     }
 
-    public LoadService register(Object target) {
-        return register(target, 0);
+    public LoadLayout wrapper(Activity target) {
+        return wrapper(target, 0);
+    }
+
+    public LoadLayout wrapper(Activity target, int type) {
+        return wrapper((Object) target, type);
+    }
+
+    public LoadLayout wrapper(View target) {
+        return wrapper(target, 0);
+    }
+
+    public LoadLayout wrapper(View target, int type) {
+        return wrapper((Object) target, type);
     }
 
     /**
@@ -75,78 +73,72 @@ public class LoadLayoutManager {
      *
      * @param target 目标
      * @param type   标识使用哪一个已添加的{@link LoadViewPool}
-     * @return 调用此对象的showLoadView方法显示特定的布局
+     * @return 可调用此对象的showLoadView方法显示特定的布局
      */
-    public LoadService register(Object target, int type) {
-        LoadService loadService = null;
+    private LoadLayout wrapper(Object target, int type) {
+        LoadLayout loadLayout = null;
         try {
-            loadService = createLoadServiceByTarget(target);
+            loadLayout = createLoadLayoutForTarget(target);
 
             LoadViewPool loadViewPool = mLoadBuilders.get(type);
-            List<LoadView> loadViews = loadViewPool.getLoadViews();
+            List<LoadView> loadViews = loadViewPool.getLoadViewPool();
             HashMap<String, LoadView> loadViewMap = new HashMap<>();
             for (LoadView loadView : loadViews) {
-                loadViewMap.put(loadView.onCreateLoadViewId(), loadView);
+                loadViewMap.put(loadView.createLoadViewId(), loadView);
             }
-            loadService.loadViewMap = loadViewMap;
+            loadLayout.loadViewMap = loadViewMap;
         } catch (Exception e) {
             e.printStackTrace();
-            Log.e(TAG, String.format("register: register %s error", target.getClass().getSimpleName()));
+            Log.e(TAG, String.format("wrapper: wrapper %s error", target.getClass().getSimpleName()));
         }
-        return loadService;
+        return loadLayout;
     }
 
-    private static LoadService createLoadServiceByTarget(Object target) {
-        LoadService loadService = null;
+    private static LoadLayout createLoadLayoutForTarget(Object target) {
+        LoadLayout loadLayout = null;
         ViewGroup oldParent = null;
-        View oldView = null;
+        View originalView = null;
         Context context = null;
 
         if (target instanceof Activity) {
             Activity activity = (Activity) target;
             oldParent = (ViewGroup) activity.findViewById(android.R.id.content);
-            oldView = oldParent.getChildAt(0);
-            context = activity;
+            originalView = oldParent.getChildAt(0);
+            context = activity.getApplicationContext();
         } else if (target instanceof View) {
-            oldView = (View) target;
-            oldParent = (ViewGroup) oldView.getParent();
-            context = oldView.getContext();
+            originalView = (View) target;
+            oldParent = (ViewGroup) originalView.getParent();
+            context = originalView.getContext().getApplicationContext();
         } else {
-            Log.e(TAG, "createLoadServiceByTarget: unsupport target");
+            Log.e(TAG, "createLoadLayoutForTarget: unsupport target");
             return null;
         }
 
-        loadService = new LoadService(context);
-        loadService.oldView = oldView;
+        loadLayout = new LoadLayout(context);
+        loadLayout.originalView = originalView;
 
         if (oldParent != null) {
-            int index = oldParent.indexOfChild(oldView);
-            oldParent.removeView(oldView);
-            //对target是view时，当外界调用mLoadService.getContainerLayout()时，返回的应该始终是
-            //loadService.mLayoutContainer，因此不需要add。
+            int index = oldParent.indexOfChild(originalView);
+            oldParent.removeView(originalView);
             if (target instanceof Activity) {
-                oldParent.addView(loadService.mLayoutContainer, index, oldView.getLayoutParams());
+                oldParent.addView(loadLayout, index, originalView.getLayoutParams());
             }
         }
 
         //给target裹上我们的布局容器
-        loadService.mLayoutContainer.addView(oldView, new ViewGroup.LayoutParams(
+        loadLayout.addView(originalView, new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        return loadService;
+
+        return loadLayout;
     }
 
 
-    public static LoadViewPool createLoadViewPool() {
-        return createLoadViewPool(0);
+    public static LoadViewPool buildLoadViewPool() {
+        return buildLoadViewPool(DEFAULT_POOL_TYPE);
     }
 
-    /**
-     * 获取参数构造器
-     *
-     * @param type 布局池的唯一标识
-     * @return 布局池实例
-     */
-    public static LoadViewPool createLoadViewPool(int type) {
+
+    public static LoadViewPool buildLoadViewPool(int type) {
         return new LoadViewPool(type);
     }
 
@@ -169,11 +161,11 @@ public class LoadLayoutManager {
             return this;
         }
 
-        public void register() {
-            LoadLayoutManager.getInstance().addLoadBuilder(this);
+        public void build() {
+            LoadLayoutManager.getInstance().addLoadBuilder(this, type);
         }
 
-        List<LoadView> getLoadViews() {
+        List<LoadView> getLoadViewPool() {
             return mLoadViews;
         }
     }

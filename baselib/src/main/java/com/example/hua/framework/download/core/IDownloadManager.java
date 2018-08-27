@@ -23,7 +23,7 @@ public interface IDownloadManager {
 
     /**
      * start the download.
-     * if the download does't exist, this call will create a download and
+     * if the download does't exist, this call will build a download and
      * return a unique identifier;
      * if the download is in {@link DownloadStatus#DOWNLOADING} or
      * {@link DownloadStatus#PENDING}state, this call will do nothing;

@@ -343,7 +343,7 @@ public class EmojiStandardPage implements IEmojiPage {
             } else {
                 view = onCreateGridItemView(mContext);
                 if (view == null || !(view instanceof TextView)) {
-                    throw new IllegalArgumentException("create gridView item view can not be null," +
+                    throw new IllegalArgumentException("build gridView item view can not be null," +
                             "and must be instanceof TextView");
                 }
             }

@@ -59,7 +59,7 @@ public class CommonListFragment extends BaseFragment implements CommonListContra
                              @Nullable Bundle savedInstanceState) {
         if (mView == null) {
             mView = mLayoutInflater.inflate(R.layout.fragment_normal_news_common, container, false);
-            mLoadService = LoadLayoutManager.getInstance().register(mView);
+            mLoadService = LoadLayoutManager.getInstance().wrapper(mView);
             mPresenter = new CommonListPresenter();
             mPresenter.attachView(this);
         }

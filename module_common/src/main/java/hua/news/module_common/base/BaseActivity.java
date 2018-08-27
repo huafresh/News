@@ -29,8 +29,8 @@ import android.widget.TextView;
 import com.example.hua.framework.storage.StorageManager;
 import com.example.hua.framework.utils.CommonUtil;
 import com.example.hua.framework.utils.MLog;
+import com.example.hua.framework.wrapper.loadlayout.LoadLayout;
 import com.example.hua.framework.wrapper.loadlayout.LoadLayoutManager;
-import com.example.hua.framework.wrapper.loadlayout.LoadService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,9 +66,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private TextView tvExtra;
     private FrameLayout flContain;
     private Toolbar mToolBar;
-    protected LoadService mLoadService;
 
     private List<OnBackPressListener> mKeyListeners;
+    private LoadLayout loadLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +86,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         initViews();
         if (isEnableLoadManager()) {
-            mLoadService = LoadLayoutManager.getInstance().register(this);
+            loadLayout = LoadLayoutManager.getInstance().wrapper(this);
         }
     }
 
@@ -131,20 +131,24 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     protected void showLoading() {
-        if (mLoadService != null) {
-            mLoadService.showLoadView(LoadingView.class.getCanonicalName());
+
+        if (loadLayout != null) {
+            loadLayout.showLoadView(LoadingView.ID);
         }
+
     }
 
     protected void showError() {
-        if (mLoadService != null) {
-            mLoadService.showLoadView(LoadErrorView.class.getCanonicalName());
+
+        if (loadLayout != null) {
+            loadLayout.showLoadView(LoadErrorView.ID);
         }
+
     }
 
     protected void showComplete() {
-        if (mLoadService != null) {
-            mLoadService.showLoadComplete();
+        if (loadLayout != null) {
+            loadLayout.showLoadComplete();
         }
     }
 

@@ -6,8 +6,6 @@ import android.support.multidex.MultiDex;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.hua.framework.network.HttpRequest;
-import com.example.hua.framework.support.pullrefresh.IRefreshLayout;
-import com.example.hua.framework.support.pullrefresh.SupportRefreshLayout;
 import com.example.hua.framework.utils.FileUtil;
 import com.example.hua.framework.wrapper.emoji.EmojiKeyBoard;
 import com.example.hua.framework.wrapper.loadlayout.LoadLayoutManager;
@@ -57,10 +55,10 @@ public class BaseApplication extends Application {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        LoadLayoutManager.createLoadViewPool()
+        LoadLayoutManager.buildLoadViewPool()
                 .addLoadView(new LoadErrorView())
                 .addLoadView(new LoadingView())
-                .register();
+                .build();
 
         // TODO: 2017/10/15 这里拷贝assets目录下的表情到file目录，后续应该删掉，因为表情应该从服务器
         // TODO: 2017/10/15 下载，然后直接保存在file目录

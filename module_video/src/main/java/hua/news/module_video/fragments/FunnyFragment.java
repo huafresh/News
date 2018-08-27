@@ -57,7 +57,7 @@ public class FunnyFragment extends BaseFragment implements CommonObserver.OnChan
         View mView = inflater.inflate(R.layout.fragment_video_funny, container, false);
         unbinder = ButterKnife.bind(this, mView);
         mViewModel = ViewModelProviders.of(this).get(VideoViewModel.class);
-        mLoadService = LoadLayoutManager.getInstance().register(mView);
+        mLoadService = LoadLayoutManager.getInstance().wrapper(mView);
         return mLoadService.getContainerLayout();
     }
 

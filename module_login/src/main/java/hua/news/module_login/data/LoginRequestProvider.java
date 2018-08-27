@@ -38,7 +38,7 @@ public class LoginRequestProvider implements LoginRequest {
     private static final String CONTENT_URI = "content://" + AUTHORITIES;
 
     //各种请求接口
-    private static final String PATH_USER_REGISTER = "/user/register";
+    private static final String PATH_USER_REGISTER = "/user/build";
     private static final String PATH_USER_LOGIN = "/user/login";
     private static final String PATH_USER_CHECK_MAIL = "/user/checkmail";
     private static final String PATH_USER_AUTO = "/user/auto";

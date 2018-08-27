@@ -18,7 +18,7 @@ public class MapTable {
     public static String CREATE_SQL;
 
     static {
-        CREATE_SQL = "create table if not exists " + TABLE_NAME + "(" +
+        CREATE_SQL = "build table if not exists " + TABLE_NAME + "(" +
                 Column._ID + " integer primary key autoincrement," +
                 Column.COLUMN_KEY + " varchar(1000)," +
                 Column.COLUMN_VALUE + " text)";

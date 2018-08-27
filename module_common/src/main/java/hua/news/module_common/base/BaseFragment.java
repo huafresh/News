@@ -52,7 +52,7 @@ public abstract class BaseFragment extends Fragment {
             if (rootView == null) {
                 rootView = inflater.inflate(layoutId, container, false);
             }
-            mLoadService = LoadLayoutManager.getInstance().register(rootView);
+            mLoadService = LoadLayoutManager.getInstance().wrapper(rootView);
             view = mLoadService.getContainerLayout();
         } else {
             view = super.onCreateView(inflater, container, savedInstanceState);
