@@ -1,11 +1,14 @@
 package com.example.hua.framework.wrapper.recyclerview;
 
+import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.IdRes;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SwitchCompat;
 import android.util.SparseArray;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +28,11 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
 
     public MyViewHolder(View itemView) {
         super(itemView);
+    }
+
+    public static MyViewHolder createViewHolder(Context context, int layoutId, ViewGroup parent) {
+        View itemView = LayoutInflater.from(context).inflate(layoutId, parent, false);
+        return new MyViewHolder(itemView);
     }
 
     @SuppressWarnings("unchecked")
@@ -89,7 +97,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder {
         return this;
     }
 
-    public MyViewHolder setSelected(@IdRes int id,boolean selected){
+    public MyViewHolder setSelected(@IdRes int id, boolean selected) {
         View view = getView(id);
         if (view != null) {
             view.setSelected(selected);

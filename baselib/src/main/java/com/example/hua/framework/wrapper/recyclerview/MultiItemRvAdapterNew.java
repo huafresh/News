@@ -1,17 +1,16 @@
 package com.example.hua.framework.wrapper.recyclerview;
 
 import android.content.Context;
-import android.support.annotation.IdRes;
 import android.support.annotation.LayoutRes;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -19,44 +18,37 @@ import java.util.List;
  *
  * @author hua
  * @date 2017/8/14
- * @deprecated 使用新版MultiItemRvAdapterNew
  */
-@Deprecated
-public abstract class MultiItemRvAdapter<T> extends RecyclerView.Adapter<MyViewHolder> {
+
+@SuppressWarnings("unchecked")
+public abstract class MultiItemRvAdapterNew extends RecyclerView.Adapter<MyViewHolder> {
 
     private static final String TAG = "MultiItemRvAdapter";
     protected final Context mContext;
-    protected int mLayoutId;
-    protected List<T> mDataList;
+    private List<Object> mDataList;
 
     private OnItemClickListener mOnItemClickListener;
     private OnItemLongClickListener mOnItemLongClickListener;
     private OnTouchListener mOnTouchListener;
 
-    public MultiItemRvAdapter(Context context) {
-        this(context, -1);
-    }
+    private ItemViewDelegateManager itemViewDelegateManager;
 
-    public MultiItemRvAdapter(Context mContext, int mLayoutId) {
+    public MultiItemRvAdapterNew(Context mContext) {
         this.mContext = mContext;
-        this.mLayoutId = mLayoutId;
+        this.itemViewDelegateManager = new ItemViewDelegateManager();
     }
 
     /**
      * 获取item数据列表
-     *
-     * @return
      */
-    public List<T> getDataList() {
-        return mDataList;
+    public List<?> getDataList() {
+        return Collections.unmodifiableList(mDataList);
     }
 
     /**
      * 设置item数据列表
-     *
-     * @param list
      */
-    public void setDataList(List<T> list) {
+    public void setDataList(List<?> list) {
         if (list == null) {
             Log.e(TAG, "setDataList: data list is null");
             return;
@@ -68,27 +60,32 @@ public abstract class MultiItemRvAdapter<T> extends RecyclerView.Adapter<MyViewH
         mDataList.addAll(list);
     }
 
+    public void addItemViewDelegate(IItemViewDelegate<?> itemViewDelegate){
+        itemViewDelegateManager.addItemViewDelegate(itemViewDelegate);
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return itemViewDelegateManager.getItemViewType(mDataList.get(position), position);
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        int layoutId = getLayoutId(parent, viewType);
-        if (layoutId == -1) {
-            layoutId = mLayoutId;
+        IItemViewDelegate itemViewDelegate = itemViewDelegateManager.getItemViewDelegate(viewType);
+        if (itemViewDelegate == null) {
+            throw new IllegalArgumentException("no layoutId was set");
         }
-        if (layoutId == -1) {
-            throw new IllegalArgumentException("no layoutId is set");
-        }
-        View itemView = LayoutInflater.from(mContext).inflate(layoutId, parent, false);
-        return new MyViewHolder(itemView);
+        return MyViewHolder.createViewHolder(mContext, itemViewDelegate.layoutId(), parent);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        T itemData = getItemData(position);
+        Object itemData = getItemData(position);
         if (itemData == null) {
             itemData = mDataList != null ? mDataList.get(position) : null;
         }
         setListeners(holder.itemView, holder.getLayoutPosition(), itemData);
-        multiConvert(holder, itemData, position);
+        itemViewDelegateManager.convert(holder,itemData,position);
     }
 
     @Override
@@ -102,11 +99,11 @@ public abstract class MultiItemRvAdapter<T> extends RecyclerView.Adapter<MyViewH
      * @param position 位置
      * @return Object 绑定的bean
      */
-    protected T getItemData(int position) {
+    protected Object getItemData(int position) {
         return null;
     }
 
-    private void setListeners(View itemView, final int position, final T data) {
+    private void setListeners(View itemView, final int position, final Object data) {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -135,28 +132,6 @@ public abstract class MultiItemRvAdapter<T> extends RecyclerView.Adapter<MyViewH
                 return false;
             }
         });
-    }
-
-    /**
-     * 具体的bean与item绑定时调用此方法
-     *
-     * @param holder   itemView holder
-     * @param data     item对应的bean
-     * @param position item位置
-     */
-    protected abstract void multiConvert(MyViewHolder holder, T data, int position);
-
-    /**
-     * 提供item布局id
-     *
-     * @param parent   recyclerView
-     * @param viewType 该item的类型
-     * @return 布局id
-     */
-    protected
-    @LayoutRes
-    int getLayoutId(ViewGroup parent, int viewType) {
-        return -1;
     }
 
     public void setOnItemClickListener(OnItemClickListener<?> listener) {

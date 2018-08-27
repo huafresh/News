@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.example.hua.framework.R;
 import com.example.hua.framework.wrapper.recyclerview.MultiItemRvAdapter;
+import com.example.hua.framework.wrapper.recyclerview.MultiItemRvAdapterNew;
 import com.example.hua.framework.wrapper.recyclerview.SingleRvAdapter;
 import com.example.hua.framework.wrapper.recyclerview.MyViewHolder;
 
@@ -203,7 +204,7 @@ public class DragOrderRecyclerView extends RecyclerView {
     }
 
     private void setItemListeners() {
-        mBaseAdapter.setOnItemLongClickListener(new MultiItemRvAdapter.OnItemLongClickListener<Object>() {
+        mBaseAdapter.setOnItemLongClickListener(new MultiItemRvAdapterNew.OnItemLongClickListener<Object>() {
             @Override
             public void onLongClick(View view, Object data, int position) {
                 mTouchHelper.startDrag(findViewHolderForAdapterPosition(position));
@@ -211,7 +212,7 @@ public class DragOrderRecyclerView extends RecyclerView {
                 notifyStateChanged(mCurState);
             }
         });
-        mBaseAdapter.setOnTouchListener(new MultiItemRvAdapter.OnTouchListener() {
+        mBaseAdapter.setOnTouchListener(new MultiItemRvAdapterNew.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event, int position) {
                 int actionMasked = event.getActionMasked();
@@ -357,7 +358,7 @@ public class DragOrderRecyclerView extends RecyclerView {
     @SuppressWarnings("unchecked")
     public <T> List<T> getDataList() {
         if (mBaseAdapter != null) {
-            return mBaseAdapter.getDataList();
+            return (List<T>) mBaseAdapter.getDataList();
         }
         return null;
     }

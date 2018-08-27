@@ -8,11 +8,11 @@ import android.support.annotation.Nullable;
  * Created by hua on 2018/8/4.
  */
 
-public interface IDownloadTask extends Runnable{
+public interface IDownloadTask {
 
-    void pause(boolean byUser);
+    void start();
 
-    void resume();
+    void pause();
 
-    void cancel();
+    void delete();
 }

@@ -19,6 +19,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 public class SupportRefreshLayout extends FrameLayout implements IRefreshLayout {
 
     private BaseRefreshLayout refreshLayout;
+    private IHeader header;
     private IFooter footer;
     private IHeader header;
     private Context context;

@@ -17,7 +17,7 @@ public class IFengConstant {
     /**
      * 详情类型 - 广告
      */
-    public static final String DETAIL_TYPE_ADERT = "advert";
+    public static final String DETAIL_TYPE_ADVERT = "advert";
 
     /**
      * 详情类型 - 图片
@@ -43,7 +43,6 @@ public class IFengConstant {
      * 列表中的显示类型 - 单图
      */
     public static final String VIEW_TYPE_LONGIMG = "longimg";
-
 
     /**
      * 一般请求的baseUrl

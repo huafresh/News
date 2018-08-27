@@ -1,6 +1,7 @@
 package com.example.hua.framework.download;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.example.hua.framework.download.core.DownloadRecord;
 import com.example.hua.framework.download.core.DownloadRequest;
@@ -24,8 +25,8 @@ class OkHttpDownloadConnection implements IDownloadNetConnection {
     private OkHttpClient okHttpClient = new OkHttpClient();
 
     @Override
-    public InputStream connect(@NonNull DownloadRequest request,
-                               @NonNull DownloadRecord record) throws IOException {
+    public @Nullable InputStream connect(@NonNull DownloadRequest request,
+                        @NonNull DownloadRecord record) throws IOException {
         InputStream input = null;
         long downloadedSize = record.getDownloadedSize();
         Request okHttpRequest = new Request.Builder()

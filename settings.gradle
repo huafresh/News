@@ -1,1 +1,1 @@
-include ':app', ':baselib', ':module_login', ':buildSrc', ':module_common', ':module_main', ':module_service', ':module_news', ':module_video', ':module_live', ':module_user', ':module_setting'
+include ':app', ':baselib', ':module_login', ':buildSrc', ':module_common', ':module_main', ':module_service', ':module_news', ':module_video', ':module_live', ':module_user', ':module_setting', ':module_test'

@@ -1,6 +1,7 @@
 package com.example.hua.framework.download.core;
 
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,6 +13,6 @@ import java.io.InputStream;
 
 public interface IDownloadNetConnection {
 
-    InputStream connect(@NonNull DownloadRequest request,
+    @Nullable InputStream connect(@NonNull DownloadRequest request,
                         @NonNull DownloadRecord record) throws IOException;
 }

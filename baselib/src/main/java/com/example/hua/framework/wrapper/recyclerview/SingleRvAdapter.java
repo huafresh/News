@@ -3,6 +3,8 @@ package com.example.hua.framework.wrapper.recyclerview;
 import android.content.Context;
 import android.support.annotation.LayoutRes;
 
+import com.bumptech.glide.request.target.SimpleTarget;
+
 import java.util.List;
 
 /**
@@ -12,27 +14,36 @@ import java.util.List;
  * @date 2017/6/16
  */
 
-public abstract class SingleRvAdapter<T> extends MultiItemRvAdapter<T> {
+public abstract class SingleRvAdapter<T> extends MultiItemRvAdapterNew {
 
     public SingleRvAdapter(Context context, @LayoutRes int layoutId) {
         this(context, null, layoutId);
     }
 
-    protected SingleRvAdapter(Context context, List<T> dataList, @LayoutRes int layouId) {
-        super(context, layouId);
-        setDataList(dataList);
-    }
+    protected SingleRvAdapter(Context context, List<T> dataList, @LayoutRes final int layoutId) {
+        super(context);
+        addItemViewDelegate(new IItemViewDelegate<T>() {
+            @Override
+            public int layoutId() {
+                return layoutId;
+            }
 
-    @Override
-    protected void multiConvert(MyViewHolder holder, Object data, int position) {
-        convert(holder, (T) data, position);
+            @Override
+            public boolean isCanHandle(T data, int position) {
+                return true;
+            }
+
+            @Override
+            public void convert(MyViewHolder viewHolder, T data, int position) {
+                SingleRvAdapter.this.convert(viewHolder, data, position);
+            }
+        });
+
+        setDataList(dataList);
     }
 
     /**
      * 决定item是否有分割线，这对边界的item无效
-     *
-     * @param position
-     * @return
      */
     public boolean hasDivider(int position) {
         return true;

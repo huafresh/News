@@ -13,6 +13,7 @@
       <module fileurl="file://$PROJECT_DIR$/module_news/module_news.iml" filepath="$PROJECT_DIR$/module_news/module_news.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_service/module_service.iml" filepath="$PROJECT_DIR$/module_service/module_service.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_setting/module_setting.iml" filepath="$PROJECT_DIR$/module_setting/module_setting.iml" />
+      <module fileurl="file://$PROJECT_DIR$/module_test/module_test.iml" filepath="$PROJECT_DIR$/module_test/module_test.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_user/module_user.iml" filepath="$PROJECT_DIR$/module_user/module_user.iml" />
       <module fileurl="file://$PROJECT_DIR$/module_video/module_video.iml" filepath="$PROJECT_DIR$/module_video/module_video.iml" />
     </modules>

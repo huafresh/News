@@ -102,13 +102,14 @@ class DownloadManagerImpl implements IDownloadManager {
         if (task == null) {
             task = buildDownloadTask(request, new WeakDownloadListener(listener), record);
             //将task加入队列，在网络状态允许时自动开始 or 暂停下载
-            NetworkTypeUtil.get(context).add(task);
+            NetworkStateObservable.get(context).add(task);
             taskMap.put(id, task);
         } else {
             task.updateDownloadListener(new WeakDownloadListener(listener));
         }
 
         task.start();
+        task.pauseByUser = false;
 
         return id;
     }
@@ -126,7 +127,7 @@ class DownloadManagerImpl implements IDownloadManager {
         if (TextUtils.isEmpty(name)) {
             name = getNameFromUrl(request.getUrl());
         }
-        record.setName(name);
+        record.setName(Util.generateFileName(saveDir, name));
         return record;
     }
 
@@ -171,7 +172,8 @@ class DownloadManagerImpl implements IDownloadManager {
 
         DownloadTask task = taskMap.get(id);
         if (task != null) {
-            task.pause(true);
+            task.pause();
+            task.pauseByUser = true;
             return true;
         }
 
@@ -188,6 +190,7 @@ class DownloadManagerImpl implements IDownloadManager {
         DownloadTask task = taskMap.get(id);
         if (task != null) {
             task.resume();
+            task.pauseByUser = false;
             return true;
         }
 
@@ -223,7 +226,7 @@ class DownloadManagerImpl implements IDownloadManager {
         for (String id : ids) {
             DownloadRecord record = downloadDatabase.loadDownloadRecord(id);
             if (record == null) {
-                throw new UnsupportedOperationException("please call start first");
+                throw new UnsupportedOperationException(String.format("id = %s illegal, please call start first", id));
             }
         }
 
@@ -233,14 +236,17 @@ class DownloadManagerImpl implements IDownloadManager {
             //清除内存中正在运行的task
             DownloadTask task = taskMap.remove(id);
             if (task != null) {
-                NetworkTypeUtil.get(context)
+                NetworkStateObservable.get(context)
                         .remove(task);
-                task.cancel();
+                task.delete();
             }
 
             //清除下载的文件
             File file = new File(record.getSavePath());
             file.delete();
+
+            //清除下载记录
+            downloadDatabase.deleteDownloadRecord(id);
         }
 
         return true;
@@ -314,31 +320,5 @@ class DownloadManagerImpl implements IDownloadManager {
             }
         }
     }
-
-//    private static class DownloadTaskWrapper implements INetworkTypeTask{
-//
-//        private DownloadTask downloadTask;
-//        private DownloadRequest request;
-//
-//        public DownloadTaskWrapper(DownloadTask downloadTask, DownloadRequest request) {
-//            this.downloadTask = downloadTask;
-//            this.request = request;
-//        }
-//
-//        @Override
-//        public int getAllowNetworkType() {
-//            return request.getAllowNetworkType();
-//        }
-//
-//        @Override
-//        public void onAvailable() {
-//
-//        }
-//
-//        @Override
-//        public void onDisAvailable() {
-//
-//        }
-//    }
 
 }

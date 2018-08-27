@@ -39,11 +39,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import hua.news.module_common.base.BaseFragment;
-import hua.news.module_common.base.BaseViewModel;
 import hua.news.module_common.constants.IFengConstant;
 import hua.news.module_common.loadviews.LoadErrorView;
 import hua.news.module_news.R;
-import hua.news.module_news.R2;
 import hua.news.module_news.ifengdetail.IFengDetailActivity;
 import hua.news.module_news.ifengdetail.IFengWebActivity;
 import hua.news.module_news.ifengdetail.ImageBrowserActivity;
@@ -269,7 +267,7 @@ public class IFengNewsListFragment extends BaseFragment {
             case IFengConstant.DETAIL_TYPE_DOC:
                 IFengDetailActivity.start(mActivity, data.getDocumentId());
                 break;
-            case IFengConstant.DETAIL_TYPE_ADERT:
+            case IFengConstant.DETAIL_TYPE_ADVERT:
                 IFengWebActivity.start(mActivity, data.getLink().getWeburl());
                 break;
             case IFengConstant.DETAIL_TYPE_SLIDE:

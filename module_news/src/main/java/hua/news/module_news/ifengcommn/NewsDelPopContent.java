@@ -15,6 +15,7 @@ import com.example.hua.framework.interfaces.IWindow;
 import com.example.hua.framework.utils.CommonUtil;
 import com.example.hua.framework.wrapper.popupwindow.CommonPopupWindow;
 import com.example.hua.framework.wrapper.recyclerview.MultiItemRvAdapter;
+import com.example.hua.framework.wrapper.recyclerview.MultiItemRvAdapterNew;
 import com.example.hua.framework.wrapper.recyclerview.MyViewHolder;
 import com.example.hua.framework.wrapper.recyclerview.SingleRvAdapter;
 
@@ -116,7 +117,7 @@ public class NewsDelPopContent implements IWindow.IContentView {
     }
 
     private void setListeners() {
-        adapter.setOnItemClickListener(new MultiItemRvAdapter.OnItemClickListener<Object>() {
+        adapter.setOnItemClickListener(new MultiItemRvAdapterNew.OnItemClickListener<Object>() {
             @Override
             public void onClick(View view, Object data, int position) {
                 if (selectedPos.contains(position)) {

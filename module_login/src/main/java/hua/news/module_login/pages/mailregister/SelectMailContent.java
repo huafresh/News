@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.example.hua.framework.interfaces.IWindow;
 import com.example.hua.framework.wrapper.dialog.CommonDialog;
+import com.example.hua.framework.wrapper.recyclerview.MultiItemRvAdapter;
 import com.example.hua.framework.wrapper.recyclerview.SingleRvAdapter;
 import com.example.hua.framework.wrapper.recyclerview.MyViewHolder;
 
@@ -61,9 +62,9 @@ public class SelectMailContent implements IWindow.IContentView {
         Adapter mAdapter = new Adapter(mContext, R.layout.item_select_mail_suffix);
         final List<String> mDataList = Arrays.asList("@163.com", "@126.com", "@yeah.net");
         mAdapter.setDataList(mDataList);
-        mAdapter.setOnItemClickListener(new SingleRvAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new MultiItemRvAdapter.OnItemClickListener<Object>() {
             @Override
-            public void onClick(View view, int position) {
+            public void onClick(View view, Object data, int position) {
                 if (mCommonDialog != null) {
                     mCommonDialog.dismiss();
                     if (mOnDialogDimissListener != null) {

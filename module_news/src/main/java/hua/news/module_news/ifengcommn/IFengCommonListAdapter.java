@@ -23,8 +23,6 @@ import hua.news.module_news.R;
 
 class IFengCommonListAdapter extends MultiItemRvAdapter<IFengNewsEntity> {
 
-
-
     /**
      * 新闻：标题模式
      */
@@ -99,7 +97,7 @@ class IFengCommonListAdapter extends MultiItemRvAdapter<IFengNewsEntity> {
                         return TYPE_DOC_SLIDEIMG;
                     }
                 }
-            } else if (IFengConstant.DETAIL_TYPE_ADERT.equals(newsType)) {
+            } else if (IFengConstant.DETAIL_TYPE_ADVERT.equals(newsType)) {
                 if (entity.getStyle() != null) {
                     if (IFengConstant.VIEW_TYPE_TITLEIMG.equals(entity.getStyle().getView())) {
                         return TYPE_ADVERT_TITLEIMG;

@@ -28,10 +28,11 @@ class Md5IdCreator implements IdCreator {
             byte[] byteArray = messageDigest.digest();
             StringBuilder md5StrBuilder = new StringBuilder();
             for (byte b : byteArray) {
-                if (Integer.toHexString(0xFF & b).length() == 1)
+                if (Integer.toHexString(0xFF & b).length() == 1) {
                     md5StrBuilder.append("0").append(Integer.toHexString(0xFF & b));
-                else
+                } else {
                     md5StrBuilder.append(Integer.toHexString(0xFF & b));
+                }
             }
             //16位加密，从第9位到25位
             return md5StrBuilder.substring(8, 24).toUpperCase();

@@ -28,8 +28,7 @@ public interface IDownloadManager {
      * if the download is in {@link DownloadStatus#DOWNLOADING} or
      * {@link DownloadStatus#PENDING}state, this call will do nothing;
      * if the download is in {@link DownloadStatus#PAUSED} or
-     * {@link DownloadStatus#FAILED}state, this call will resume it by
-     * call {@link #resume(String)};
+     * {@link DownloadStatus#FAILED}state, this call will try to resume it.
      * if the download is in{@link DownloadStatus#FINISHED} state,
      * this method will call {@link DownloadListener#onDownLoadFinished(DownloadRecord, String)} immediately.
      *

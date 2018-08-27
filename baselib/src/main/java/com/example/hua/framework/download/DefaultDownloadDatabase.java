@@ -2,6 +2,7 @@ package com.example.hua.framework.download;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 
 import com.example.hua.framework.download.core.DownloadRecord;
 import com.example.hua.framework.download.core.IDownloadDatabase;
@@ -32,6 +33,15 @@ class DefaultDownloadDatabase implements IDownloadDatabase {
     @Override
     public DownloadRecord loadDownloadRecord(String key) {
         String recordStr = StorageManager.getInstance(context).getFromDisk(key);
-        return JsonParseUtil.getInstance().parseJsonToObject(recordStr, DownloadRecord.class);
+        if (!TextUtils.isEmpty(recordStr)) {
+            return JsonParseUtil.getInstance().parseJsonToObject(recordStr, DownloadRecord.class);
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteDownloadRecord(String key) {
+        StorageManager.getInstance(context).saveToDisk(key,null);
+        return true;
     }
 }

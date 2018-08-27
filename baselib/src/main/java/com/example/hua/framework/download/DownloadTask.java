@@ -8,6 +8,7 @@ import com.example.hua.framework.download.core.IDownloadDatabase;
 import com.example.hua.framework.download.core.IDownloadManager;
 import com.example.hua.framework.download.core.IDownloadNetConnection;
 import com.example.hua.framework.download.core.IDownloadTask;
+import com.example.hua.framework.download.core.INetworkObserver;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,10 +24,11 @@ import java.util.concurrent.ExecutorService;
  */
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
-class DownloadTask implements IDownloadTask, INetworkTypeTask {
+class DownloadTask implements IDownloadTask, INetworkObserver, Runnable {
 
-    private static final long REFRESH_TIME = 500; //ms
-    private static final int RETRY_TIMES = 1;
+    private static final int RETRY_MAX_TIMES = 2;
+    private static final long REFRESH_TIME_PERIOD = 500; //ms
+    private static final int BUFF_SIZE = 1024 * 4;
     private IDownloadManager downloadManager;
     private DownloadRequest request;
     private String url;
@@ -40,9 +42,9 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
     private long downloadedSize;
     private final Object lock = new Object();
     private boolean pauseFlag = false;
-    private boolean cancelFlag = false;
+    private boolean deleteFlag = false;
     private boolean executed = false;
-    private boolean pauseByser = false;
+    boolean pauseByUser = false;
 
     DownloadTask(IDownloadManager downloadManager,
                  DownloadRequest request,
@@ -67,28 +69,39 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
 
     @Override
     public void run() {
-        int times = 0;
+        int tryTimes = -1;
         while (true) {
             InputStream netInput = null;
             RandomAccessFile raf = null;
             try {
-                times++;
-                record.setStatus(DownloadStatus.DOWNLOADING);
-                netInput = netConnection.connect(request, record);
+                tryTimes++;
+
                 checkDownloadedFile();
 
+                //下载连接
+                netInput = netConnection.connect(request, record);
+                if (netInput == null) {
+                    Thread.sleep(1000);
+                    if (tryTimes > RETRY_MAX_TIMES) {
+                        throw new IOException("网络连接异常");
+                    }
+                    continue;
+                }
+
+                record.setStatus(DownloadStatus.DOWNLOADING);
                 raf = new RandomAccessFile(record.getSavePath(), "rw");
                 FileChannel fileChannel = raf.getChannel();
                 MappedByteBuffer outBuff = fileChannel.map(FileChannel.MapMode.READ_WRITE,
                         record.getDownloadedSize(), record.getTotalSize());
 
-                byte[] buff = new byte[1024 * 4];
+                byte[] buff = new byte[BUFF_SIZE];
                 int len = -1;
-                while (!cancelFlag && !pauseFlag &&
+                while (!deleteFlag &&
+                        !pauseFlag &&
                         (len = netInput.read(buff, 0, buff.length)) != -1) {
                     outBuff.put(buff, 0, len);
                     downloadedSize += len;
-                    if (System.currentTimeMillis() - lastRefreshTime > REFRESH_TIME) {
+                    if (System.currentTimeMillis() - lastRefreshTime > REFRESH_TIME_PERIOD) {
                         record.setDownloadedSize(downloadedSize);
                         lastRefreshTime = System.currentTimeMillis();
                         notifyProgressUpdate();
@@ -99,11 +112,8 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
                     record.setStatus(DownloadStatus.PAUSED);
                     downloadDatabase.saveDownloadRecord(taskId, record);
                     lock.wait();
-                } else if (cancelFlag) {
-                    record.setStatus(DownloadStatus.FAILED);
-                    record.setErrorMessage("取消下载");
-                    downloadDatabase.saveDownloadRecord(taskId, record);
-                    notifyFailed();
+                } else if (deleteFlag) {
+                    break;
                 } else {
                     //finished
                     record.setStatus(DownloadStatus.FINISHED);
@@ -112,25 +122,17 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
-                if (times > RETRY_TIMES) {
-                    record.setStatus(DownloadStatus.FAILED);
-                    record.setErrorMessage(e.getMessage());
-                    downloadDatabase.saveDownloadRecord(taskId, record);
-                    notifyFailed();
+                if (tryTimes > RETRY_MAX_TIMES) {
+                    notifyFailedWithMessage(e.getMessage());
                     break;
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
-                record.setStatus(DownloadStatus.FAILED);
-                record.setErrorMessage(e.getMessage());
-                downloadDatabase.saveDownloadRecord(taskId, record);
-                notifyFailed();
+                notifyFailedWithMessage(e.getMessage());
+                break;
             } catch (Exception e) {
                 e.printStackTrace();
-                record.setStatus(DownloadStatus.FAILED);
-                record.setErrorMessage(e.getMessage());
-                downloadDatabase.saveDownloadRecord(taskId, record);
-                notifyFailed();
+                notifyFailedWithMessage(e.getMessage());
                 break;
             } finally {
                 if (netInput != null) {
@@ -152,6 +154,15 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
         }
     }
 
+    private void notifyFailedWithMessage(String errorMessage) {
+        record.setStatus(DownloadStatus.FAILED);
+        record.setErrorMessage(errorMessage);
+        downloadDatabase.saveDownloadRecord(taskId, record);
+        if (listener != null) {
+            listener.onDownloadFailed(record, record.getErrorMessage());
+        }
+    }
+
 
     private void checkDownloadedFile() throws IOException {
         String savePath = record.getSavePath();
@@ -159,14 +170,8 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
         if (!downloadedFile.exists()) {
             //创建下载文件
             downloadedFile.createNewFile();
-        } else if (record.getStatus() == DownloadStatus.PENDING) {
-            //说明原来存在同名文件
-            StringBuilder nameBuilder = new StringBuilder(record.getName());
-            int indexDot = nameBuilder.indexOf(".");
-            nameBuilder.insert(indexDot - 1, "(bat)");
-            record.setName(nameBuilder.toString());
         } else {
-            //下载已经开始，且文件存在，则校验文件大小
+            //文件存在，则校验文件大小
             if (downloadedFile.length() != record.getDownloadedSize()) {
                 downloadedFile.delete();
                 downloadedFile.createNewFile();
@@ -174,11 +179,12 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
         }
     }
 
+
     void updateDownloadListener(DownloadListener listener) {
         this.listener = listener;
     }
 
-    String  getDownloadUrl(){
+    String getDownloadUrl() {
         return url;
     }
 
@@ -194,13 +200,9 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
         }
     }
 
-    private void notifyFailed() {
-        if (listener != null) {
-            listener.onDownloadFailed(record, record.getErrorMessage());
-        }
-    }
 
-    void start() {
+    @Override
+    public void start() {
         DownloadStatus status = record.getStatus();
         switch (status) {
             case PENDING:
@@ -211,48 +213,59 @@ class DownloadTask implements IDownloadTask, INetworkTypeTask {
                 resume();
                 break;
             case FINISHED:
-                notifyFinished();
+                File downloadFile = new File(record.getSavePath());
+                if (downloadFile.exists()) {
+                    notifyFinished();
+                } else {
+                    //文件被删除，重新开始下载
+                    startDownloadThread();
+                }
                 break;
             case FAILED:
-                notifyFailed();
+                startDownloadThread();
                 break;
             default:
                 break;
         }
     }
 
+    private void startDownloadThread() {
+        executorService.submit(this);
+        executed = true;
+    }
+
+
     @Override
-    public void pause(boolean byUser) {
+    public void pause() {
         pauseFlag = true;
     }
 
-    @Override
-    public void resume() {
+    void resume() {
         pauseFlag = false;
         lock.notifyAll();
     }
 
     @Override
-    public void cancel() {
-        cancelFlag = true;
+    public void delete() {
+        deleteFlag = true;
     }
 
     @Override
-    public int getAllowNetworkType() {
+    public int networkType() {
         return request.getAllowNetworkType();
     }
 
     @Override
     public void onAvailable() {
         if (!executed) {
-            executorService.submit(this);
-        } else if (!pauseFlag) {
-            resume();
+            startDownloadThread();
+        } else if (!pauseByUser) {
+            start();
         }
     }
 
     @Override
     public void onDisAvailable() {
-        pause(false);
+        pause();
     }
 }
