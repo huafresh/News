@@ -7,9 +7,7 @@ android {
     packagingOptions {
         exclude 'META-INF/LICENSE'
     }
-
     compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
         applicationId "com.example.hua.news"

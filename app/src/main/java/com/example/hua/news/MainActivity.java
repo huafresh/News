@@ -6,6 +6,8 @@ import android.support.annotation.Nullable;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import hua.news.module_common.constants.RouterConstant;
+
 /**
  * app作为整体时的入口activity，通过路由启动module_main组件
  *
@@ -20,7 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main_test);
 
         try {
-            ARouter.getInstance().build("/app/main").navigation();
+            ARouter.getInstance().build(RouterConstant.MAIN).navigation();
             finish();
         } catch (Exception e) {
             e.printStackTrace();
