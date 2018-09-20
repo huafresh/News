@@ -1,4 +1,4 @@
-package com.example.hua.framework.wrapper.adapt;
+package com.example.hua.framework.wrapper.screenadapt;
 
 /**
  * @author hua

@@ -1,10 +1,11 @@
-package com.example.hua.framework.wrapper.adapt;
+package com.example.hua.framework.wrapper.screenadapt;
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
 
-import hua.test.newstest.R;
+import com.example.hua.framework.R;
+
 
 /**
  * @author hua
