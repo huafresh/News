@@ -139,7 +139,7 @@ public class UserCenterActivity extends BaseActivity implements UserCenterContra
             return;
         }
         LoginUserInfo userInfo = loginManager.getUserInfo();
-        //初始化RecyclerView Adapter
+        //初始化RecyclerView IAdapter
         adapter = new UserFollowHistoryAdapter(this);
         adapter.setDataList(userInfo.getFollow_history_info_list());
 
