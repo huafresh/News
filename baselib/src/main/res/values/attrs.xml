@@ -81,4 +81,15 @@
         </attr>
     </declare-styleable>
 
+    <!--屏幕适配-->
+    <declare-styleable name="AutoAdapt">
+        <attr name="disable" format="boolean" />
+        <attr name="baseFlag" format="enum">
+            <enum name="dpWidthSpWidth" value="1" />
+            <enum name="dpWidthSpHeight" value="2"/>
+            <enum name="dpHeightSpWidth" value="3"/>
+            <enum name="dpHeightSpHeight" value="4"/>
+        </attr>
+    </declare-styleable>
+
 </resources>
