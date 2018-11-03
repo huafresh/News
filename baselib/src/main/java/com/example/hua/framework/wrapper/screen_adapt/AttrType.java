@@ -4,6 +4,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author hua
  * @version 1.0
@@ -11,13 +14,22 @@ import android.widget.TextView;
  */
 public abstract class AttrType {
 
+    static List<AttrType> getAttrTypeList(){
+        List<AttrType> list = new ArrayList<>();
+        list.add(new WidthHeight());
+        list.add(new Padding());
+        list.add(new Margin());
+        list.add(new TextSize());
+        return list;
+    }
+
     public static class WidthHeight extends AttrType {
 
         @Override
         public void adapt(View view) {
             ViewGroup.LayoutParams layoutParams = view.getLayoutParams();
-            layoutParams.width = DesignScreen.getNewPxFromDp(layoutParams.width);
-            layoutParams.height = DesignScreen.getNewPxFromDp(layoutParams.height);
+            layoutParams.width = DesignScreen.getNewPxForDp(layoutParams.width);
+            layoutParams.height = DesignScreen.getNewPxForDp(layoutParams.height);
         }
     }
 
@@ -30,10 +42,10 @@ public abstract class AttrType {
             int bottom = view.getPaddingBottom();
 
             view.setPadding(
-                    DesignScreen.getNewPxFromDp(left),
-                    DesignScreen.getNewPxFromDp(top),
-                    DesignScreen.getNewPxFromDp(right),
-                    DesignScreen.getNewPxFromDp(bottom)
+                    DesignScreen.getNewPxForDp(left),
+                    DesignScreen.getNewPxForDp(top),
+                    DesignScreen.getNewPxForDp(right),
+                    DesignScreen.getNewPxForDp(bottom)
             );
         }
     }
@@ -44,10 +56,10 @@ public abstract class AttrType {
             ViewGroup.LayoutParams params = view.getLayoutParams();
             if (params instanceof ViewGroup.MarginLayoutParams) {
                 ViewGroup.MarginLayoutParams marginParams = (ViewGroup.MarginLayoutParams) params;
-                marginParams.leftMargin = DesignScreen.getNewPxFromDp(marginParams.leftMargin);
-                marginParams.topMargin = DesignScreen.getNewPxFromDp(marginParams.topMargin);
-                marginParams.rightMargin = DesignScreen.getNewPxFromDp(marginParams.rightMargin);
-                marginParams.bottomMargin = DesignScreen.getNewPxFromDp(marginParams.bottomMargin);
+                marginParams.leftMargin = DesignScreen.getNewPxForDp(marginParams.leftMargin);
+                marginParams.topMargin = DesignScreen.getNewPxForDp(marginParams.topMargin);
+                marginParams.rightMargin = DesignScreen.getNewPxForDp(marginParams.rightMargin);
+                marginParams.bottomMargin = DesignScreen.getNewPxForDp(marginParams.bottomMargin);
             }
         }
     }
@@ -58,7 +70,7 @@ public abstract class AttrType {
         public void adapt(View view) {
             if (view instanceof TextView) {
                 TextView textView = (TextView) view;
-                textView.setTextSize(DesignScreen.getNewPxFromSp(textView.getTextSize()));
+                textView.setTextSize(DesignScreen.getNewPxForSp(textView.getTextSize()));
             }
         }
     }

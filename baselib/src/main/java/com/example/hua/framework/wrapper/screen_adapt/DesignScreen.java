@@ -19,12 +19,12 @@ public class DesignScreen {
     private static float density;
     private static float scaledDensity;
 
-    void init(Context context) {
+    static void init(Context context) {
         try {
             String packageName = context.getPackageName();
             ApplicationInfo info = context.getPackageManager()
                     .getApplicationInfo(packageName, PackageManager.GET_META_DATA);
-            designWidth = info.metaData.getInt("", -1);
+            designWidth = info.metaData.getInt("design_width_px", -1);
             designHeight = info.metaData.getInt("design_height_px", -1);
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
@@ -42,13 +42,13 @@ public class DesignScreen {
         scaledDensity = displayMetrics.scaledDensity;
     }
 
-    public static int getNewPxFromDp(int curPx) {
+    public static int getNewPxForDp(int curPx) {
         float dp = curPx * 1.0f / density;
         float newDensity = widthPixels * 1.0f / designWidth;
         return (int) (newDensity * dp);
     }
 
-    public static int getNewPxFromSp(float curSp) {
+    public static int getNewPxForSp(float curSp) {
         float sp = curSp * 1.0f / scaledDensity;
         float ratio = scaledDensity / density;
         float newDensity = widthPixels * 1.0f / designWidth;
