@@ -82,8 +82,11 @@ public class AutoAdaptManager {
 
         ensureNewDisplayMetricsInfo();
         ensureMetaData();
-        LayoutInflaterCompat.setFactory2(activity.getLayoutInflater(), new InflaterFactory(baseFlag));
-
+        try {
+            LayoutInflaterCompat.setFactory2(activity.getLayoutInflater(), new InflaterFactory(baseFlag));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         activity.getIntent().putExtra(KEY_ENABLE_ADAPT, true);
     }
 
